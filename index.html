@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Core Cipher Labs</title>
+  <meta
+    name="description"
+    content="Core Cipher Labs adalah website personal untuk Project, tools, dan riset Cyber Security"
+  />
+
+  <style>
+    :root {
+      --bg: #0f1318;
+      --panel: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f2ede4;
+      --muted: #b7b0a3;
+      --muted-2: #8f8779;
+      --accent: #c5a56a;
+      --accent-soft: rgba(197, 165, 106, 0.12);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      --container: 1180px;
+      --transition: 0.35s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(197, 165, 106, 0.10), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(197, 165, 106, 0.06), transparent 18%),
+        linear-gradient(180deg, #0f1318 0%, #151a20 45%, #101419 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 88%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(197, 165, 106, 0.18);
+      color: #e5cfaa;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(197, 165, 106, 0.45);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+
+    .section-head p {
+      max-width: 430px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 16px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #d4b37a, #b9945c);
+      color: #14181d;
+      box-shadow: 0 14px 30px rgba(197, 165, 106, 0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-2px);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(15, 19, 24, 0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      object-fit: cover;
+      padding: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-links a {
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      font-size: 1.1rem;
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -170px;
+      top: -120px;
+      border-radius: 50%;
+      border: 1px solid rgba(197,165,106,0.14);
+      box-shadow:
+        0 0 0 42px rgba(197,165,106,0.04),
+        0 0 0 96px rgba(197,165,106,0.02);
+      pointer-events: none;
+    }
+
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,165,106,0.08), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      padding: 18px 8px 10px 8px;
+      min-height: 570px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      padding-left: 10px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 5vw, 5.2rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+      margin-bottom: 18px;
+      max-width: 760px;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding-left: 10px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+      color: #f6ecda;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .visual-card {
+      position: relative;
+      min-height: 350px;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at center, rgba(197,165,106,0.12), transparent 35%),
+        rgba(255,255,255,0.04);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+    }
+
+    .ring,
+    .ring-2,
+    .ring-3 {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(197,165,106,0.14);
+    }
+
+    .ring { width: 180px; height: 180px; }
+    .ring-2 { width: 250px; height: 250px; opacity: 0.78; }
+    .ring-3 { width: 330px; height: 330px; opacity: 0.42; }
+
+    .visual-card img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 32px;
+      padding: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.22);
+      position: relative;
+      z-index: 2;
+    }
+
+    .dot,
+    .dot-2 {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(197,165,106,0.46);
+      z-index: 1;
+    }
+
+    .dot {
+      top: 58px;
+      right: 84px;
+    }
+
+    .dot-2 {
+      bottom: 76px;
+      left: 72px;
+    }
+
+    .side-panel {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .side-panel small {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted-2);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+    }
+
+    .side-panel h3 {
+      font-size: 1.24rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .side-panel p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .mini-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .mini-points span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .mini-points span::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .highlight-bar {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.035);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px 28px;
+    }
+
+    .highlight-bar p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(197,165,106,0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-thumb {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #202831;
+    }
+
+    .feature-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .feature-card:hover .feature-thumb img {
+      transform: scale(1.04);
+    }
+
+    .feature-body {
+      padding: 22px;
+    }
+
+    .feature-body h3 {
+      font-size: 1.16rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .feature-body p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #efdcb8;
+      font-weight: 600;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 20px;
+    }
+
+    .about-box,
+    .list-box {
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .about-box h3,
+    .list-box h3 {
+      font-size: 1.32rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .about-box p,
+    .list-box p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .value-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .value-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .value-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .value-item span {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .footer {
+      margin-top: 88px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 24px;
+      padding: 42px 0;
+    }
+
+    .footer-brand p,
+    .footer-col a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-brand p {
+      max-width: 420px;
+      margin-top: 14px;
+    }
+
+    .footer .brand-logo {
+      width: 68px;
+      height: 68px;
+    }
+
+    .footer-col h4 {
+      font-size: 1rem;
+      margin-bottom: 14px;
+      color: #f1e8d8;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-bottom {
+      padding: 18px 0 28px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .grid-4,
+      .about-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links,
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav.open .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 20px;
+        background: rgba(18, 23, 29, 0.98);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-grid,
+      .grid-4,
+      .about-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main {
+        min-height: auto;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--container), calc(100% - 20px));
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.45rem;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .about-box,
+      .list-box {
+        padding: 24px;
+      }
+
+      .brand-logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .visual-card img {
+        width: 124px;
+        height: 124px;
+      }
+
+      .hero-shell {
+        padding: 18px;
+      }
+
+      .hero-copy,
+      .hero-stats {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a href="index.html" class="brand">
+          <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+          <div class="brand-text">
+            <strong>Core Cipher Labs</strong>
+            <span>Project, tools, dan Cyber Security</span>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html" class="active">Beranda</a>
+          <a href="projects.html">Proyek</a>
+          <a href="tools.html">Tools</a>
+          <a href="about.html">Tentang</a>
+          <a href="contact.html">Kontak</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="projects.html" class="btn btn-secondary">Lihat Proyek</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell reveal">
+          <div class="hero-grid">
+            <div class="hero-main">
+              <div class="hero-copy">
+                <div class="badge">Personal Use</div>
+                <h1>Tempat menampilkan proyek, tools, dan riset keamanan siber.</h1>
+                <p>
+                  Core Cipher Labs dipakai untuk mengumpulkan hasil kerja,
+                  eksperimen, dan catatan pengembangan dalam satu tempat yang bisa diakses dengan mudah.
+                </p>
+
+                <div class="hero-actions">
+                  <a href="projects.html" class="btn btn-primary">Lihat Proyek</a>
+                  <a href="tools.html" class="btn btn-secondary">Lihat Tools</a>
+                </div>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat-card">
+                  <strong>Proyek</strong>
+                  <span>Berisi pekerjaan yang sedang dibuat, diuji, atau dikembangkan lebih lanjut.</span>
+                </div>
+                <div class="stat-card">
+                  <strong>Tools</strong>
+                  <span>Kumpulan script, utility, dan alat bantu untuk kebutuhan teknis tertentu.</span>
+                </div>
+                <div class="stat-card">
+                  <strong>Riset</strong>
+                  <span>Catatan eksplorasi, percobaan, dan topik yang sedang dipelajari.</span>
+                </div>
+              </div>
+            </div>
+
+            <aside class="hero-side">
+              <div class="visual-card">
+                <span class="ring"></span>
+                <span class="ring-2"></span>
+                <span class="ring-3"></span>
+                <span class="dot"></span>
+                <span class="dot-2"></span>
+                <img src="logo.png" alt="Logo besar Core Cipher Labs" />
+              </div>
+
+              <div class="side-panel">
+                <small>Fokus</small>
+                <h3>Fokus Utama</h3>
+                <p>
+                  Website ini dipakai untuk merangkum hal-hal yang sedang dikerjakan,
+                  mulai dari proyek mandiri, tools yang dibuat sendiri, sampai eksplorasi teknis.
+                </p>
+
+                <div class="mini-points">
+                  <span>Proyek yang sedang berjalan</span>
+                  <span>Tools dan utility buatan sendiri</span>
+                  <span>Catatan riset dan eksplorasi</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="highlight-bar reveal">
+          <p>
+            Semua bagian disusun supaya pengunjung bisa langsung melihat apa saja yang sedang dikerjakan di Core Cipher Labs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Isi Website</div>
+            <h2>Jelajahi berbagai kategori di Core Cipher Labs melalui navigasi halaman ini.</h2>
+          </div>
+          <p>
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <article class="feature-card reveal">
+            <div class="feature-thumb">
+              <img src="project.png" alt="Halaman proyek" />
+            </div>
+            <div class="feature-body">
+              <h3>Proyek</h3>
+              <p>
+                Berisi proyek yang sedang dibuat, eksperimen yang sedang diuji, dan pekerjaan yang masih berjalan.
+              </p>
+              <a href="projects.html" class="feature-link">Buka halaman <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-thumb">
+              <img src="tools.png" alt="Halaman tools" />
+            </div>
+            <div class="feature-body">
+              <h3>Tools</h3>
+              <p>
+                Tempat untuk menampilkan utility, script, dan alat bantu yang dibuat untuk kebutuhan tertentu.
+              </p>
+              <a href="tools.html" class="feature-link">Buka halaman <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-thumb">
+              <img src="about.png" alt="Halaman tentang" />
+            </div>
+            <div class="feature-body">
+              <h3>Tentang</h3>
+              <p>
+                Menjelaskan singkat latar belakang website ini dan apa yang menjadi fokus utamanya.
+              </p>
+              <a href="about.html" class="feature-link">Buka halaman <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-thumb">
+              <img src="contact.png" alt="Halaman kontak" />
+            </div>
+            <div class="feature-body">
+              <h3>Kontak</h3>
+              <p>
+                Berisi jalur komunikasi untuk email, GitHub, dan akun lain yang ingin ditampilkan.
+              </p>
+              <a href="contact.html" class="feature-link">Buka halaman <span>→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Tentang Beranda</div>
+            <h2>Halaman depan dipakai untuk memberi gambaran singkat tentang isi Core Cipher Labs.</h2>
+          </div>
+          <p>
+            Dari sini pengunjung bisa langsung melihat bagian utama yang tersedia tanpa harus mencari terlalu jauh.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-box reveal">
+            <h3>Fungsi halaman ini</h3>
+            <p>
+              Beranda menjadi titik awal untuk melihat isi website secara singkat.
+              Bagian ini memperkenalkan fokus utama lalu mengarahkan pengunjung ke halaman yang lebih spesifik.
+            </p>
+            <p>
+              Dengan begitu, isi website tetap mudah diikuti dan setiap bagian punya peran yang jelas.
+            </p>
+            <a href="about.html" class="btn btn-secondary">Baca selengkapnya</a>
+          </div>
+
+          <div class="list-box reveal">
+            <h3>Yang ditampilkan</h3>
+            <div class="value-list">
+              <div class="value-item">
+                <strong>Proyek aktif</strong>
+                <span>Untuk menampilkan apa yang sedang dikerjakan atau dikembangkan.</span>
+              </div>
+              <div class="value-item">
+                <strong>Tools buatan sendiri</strong>
+                <span>Untuk menyimpan script, utility, dan alat bantu teknis lainnya.</span>
+              </div>
+              <div class="value-item">
+                <strong>Informasi kontak</strong>
+                <span>Untuk memudahkan orang menghubungi atau melihat profil lebih lanjut.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">
+            <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+            <div class="brand-text">
+              <strong>Core Cipher Labs</strong>
+              <span>Project, Tools, dan riset Cyber Security</span>
+            </div>
+          </div>
+          <p>
+            Ruang personal cybersecurity berbasis hobby milik pribadi untuk menampilkan project, tools, dan eksplorasi teknis secara terstruktur dan rapi.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Halaman</h4>
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="projects.html">Proyek</a>
+            <a href="tools.html">Tools</a>
+            <a href="about.html">Tentang</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <div class="footer-links">
+            <a href="contact.html">Halaman Kontak</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Core Cipher Labs. All rights reserved.</span>
+        <span>Website personal untuk Project, Tools, dan riset Cyber Security.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("nav");
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("open");
+      });
+    }
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    reveals.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>

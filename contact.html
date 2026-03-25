@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Core Cipher Labs</title>
+  <meta
+    name="description"
+    content="Halaman kontak Core Cipher Labs untuk terhubung melalui GitHub."
+  />
+
+  <style>
+    :root {
+      --bg: #0f1318;
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-2: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f2ede4;
+      --muted: #b7b0a3;
+      --muted-2: #8f8779;
+      --accent: #c5a56a;
+      --accent-soft: rgba(197, 165, 106, 0.12);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      --container: 1180px;
+      --transition: 0.35s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(197, 165, 106, 0.10), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(197, 165, 106, 0.06), transparent 18%),
+        linear-gradient(180deg, #0f1318 0%, #151a20 45%, #101419 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 88%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(197, 165, 106, 0.18);
+      color: #e5cfaa;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(197, 165, 106, 0.45);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+
+    .section-head p {
+      max-width: 430px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 16px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #d4b37a, #b9945c);
+      color: #14181d;
+      box-shadow: 0 14px 30px rgba(197, 165, 106, 0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-2px);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(15, 19, 24, 0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      object-fit: cover;
+      padding: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-links a {
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      font-size: 1.1rem;
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -170px;
+      top: -120px;
+      border-radius: 50%;
+      border: 1px solid rgba(197,165,106,0.14);
+      box-shadow:
+        0 0 0 42px rgba(197,165,106,0.04),
+        0 0 0 96px rgba(197,165,106,0.02);
+      pointer-events: none;
+    }
+
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,165,106,0.08), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-main {
+      padding: 18px 8px 10px 8px;
+      min-height: 460px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      padding-left: 10px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+      margin-bottom: 18px;
+      max-width: 760px;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .contact-card,
+    .info-panel {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .contact-card small,
+    .info-panel small {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted-2);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+    }
+
+    .contact-card h3,
+    .info-panel h3 {
+      font-size: 1.24rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .contact-card p,
+    .info-panel p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .contact-item span {
+      color: var(--muted-2);
+      font-size: 0.92rem;
+    }
+
+    .contact-item strong {
+      color: var(--text);
+      font-size: 0.94rem;
+      text-align: right;
+    }
+
+    .mini-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .mini-points span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .mini-points span::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 20px;
+    }
+
+    .contact-box,
+    .info-box {
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .contact-box h3,
+    .info-box h3 {
+      font-size: 1.32rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box p,
+    .info-box p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .github-panel {
+      margin-top: 18px;
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .github-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .github-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: var(--shadow);
+    }
+
+    .github-meta small {
+      display: block;
+      color: var(--muted-2);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      margin-bottom: 4px;
+    }
+
+    .github-meta h4 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .github-meta p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.94rem;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .info-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .info-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .info-item span {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(135deg, rgba(197,165,106,0.10), rgba(255,255,255,0.03)),
+        rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      top: -70px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(197,165,106,0.18), transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .cta-copy h2 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .cta-copy p {
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer {
+      margin-top: 88px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 24px;
+      padding: 42px 0;
+    }
+
+    .footer-brand p,
+    .footer-col a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-brand p {
+      max-width: 420px;
+      margin-top: 14px;
+    }
+
+    .footer .brand-logo {
+      width: 68px;
+      height: 68px;
+    }
+
+    .footer-col h4 {
+      font-size: 1rem;
+      margin-bottom: 14px;
+      color: #f1e8d8;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-bottom {
+      padding: 18px 0 28px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .contact-layout,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links,
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav.open .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 20px;
+        background: rgba(18, 23, 29, 0.98);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-grid,
+      .contact-layout,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main {
+        min-height: auto;
+      }
+
+      .cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--container), calc(100% - 20px));
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.45rem;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .contact-box,
+      .info-box {
+        padding: 24px;
+      }
+
+      .github-top {
+        align-items: flex-start;
+      }
+
+      .brand-logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .hero-shell,
+      .cta-box {
+        padding: 18px;
+      }
+
+      .hero-copy {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a href="index.html" class="brand">
+          <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+          <div class="brand-text">
+            <strong>Core Cipher Labs</strong>
+            <span>Project, tools, dan Cyber Security</span>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html">Beranda</a>
+          <a href="projects.html">Proyek</a>
+          <a href="tools.html">Tools</a>
+          <a href="about.html">Tentang</a>
+          <a href="contact.html" class="active">Kontak</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="about.html" class="btn btn-secondary">Tentang</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell reveal">
+          <div class="hero-grid">
+            <div class="hero-main">
+              <div class="hero-copy">
+                <div class="badge">Contact</div>
+                <h1>Terhubung secara sederhana dan terstruktur.</h1>
+                <p>
+                  Halaman kontak ini dirancang tetap fokus dan elegan. Sebagai proyek berbasis hobby, Core Cipher Labs menggunakan satu titik kontak utama untuk menampilkan proyek, tools, serta perkembangan teknis secara terpusat.
+                </p>
+
+                <div class="hero-actions">
+                  <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Buka GitHub</a>
+                  <a href="projects.html" class="btn btn-secondary">Lihat Proyek</a>
+                </div>
+              </div>
+            </div>
+
+            <aside class="hero-side">
+              <div class="contact-card">
+                <small>Primary Contact</small>
+                <h3>Profile</h3>
+                <p>
+                  Jalur utama untuk mengakses hasil kerja teknis, eksperimen, serta pembaruan yang berkaitan dengan Core Cipher Labs.
+                </p>
+
+                <div class="contact-list">
+                  <div class="contact-item">
+                    <span>Owner</span>
+                    <strong>Dhafir</strong>
+                  </div>
+                  <div class="contact-item">
+                    <span>Platform</span>
+                    <strong>GitHub</strong>
+                  </div>
+                  <div class="contact-item">
+                    <span>Fungsi</span>
+                    <strong>Projects, Tools, Releases</strong>
+                  </div>
+                  <div class="contact-item">
+                    <span>Status</span>
+                    <strong>Primary Public Contact</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="info-panel">
+                <small>Contact Notes</small>
+                <h3>Satu jalur kontak yang terstruktur dan konsisten.</h3>
+                <p>
+                  Kontak difokuskan pada satu jalur utama agar tetap ringkas, jelas, dan selaras dengan keseluruhan tampilan.
+                </p>
+
+                <div class="mini-points">
+                  <span>Terpusat pada satu platform utama</span>
+                  <span>Akses mudah ke hasil kerja dan dokumentasi</span>
+                  <span>Konsisten dengan keseluruhan tampilan platform</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">GitHub Contact</div>
+            <h2>Satu titik kontak yang disusun secara rapi, jelas, dan profesional.</h2>
+          </div>
+          <p>
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-box reveal">
+            <h3>Kontak utama</h3>
+            <p>
+              Platform utama untuk mengakses repository, proyek yang sedang dikembangkan, tools, serta perkembangan teknis dari Core Cipher Labs.
+            </p>
+            <p>
+            </p>
+
+            <div class="github-panel">
+              <div class="github-top">
+                <div class="github-icon">⌘</div>
+                <div class="github-meta">
+                  <small>GitHub</small>
+                  <h4>--</h4>
+                  <p>Repository, tools, experiments, dan publikasi teknis.</p>
+                </div>
+              </div>
+
+              <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+              >
+                Kunjungi Profil GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="info-box reveal">
+            <h3>Apa yang bisa dilihat pengunjung di sana</h3>
+            <div class="info-list">
+              <div class="info-item">
+                <strong>Projects</strong>
+                <span>Repository untuk project cybersecurity yang sedang berjalan atau akan dikembangkan.</span>
+              </div>
+              <div class="info-item">
+                <strong>Tools</strong>
+                <span>Script, utility, automation, dan helper yang relevan dengan Core Cipher Labs.</span>
+              </div>
+              <div class="info-item">
+                <strong>Updates</strong>
+                <span>Perubahan, progress, dan publikasi teknis dapat diarahkan secara langsung.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">
+            <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+            <div class="brand-text">
+              <strong>Core Cipher Labs</strong>
+              <span>Project, Tools, dan riset Cyber Security</span>
+            </div>
+          </div>
+          <p>
+            Ruang personal cybersecurity berbasis hobby milik pribadi untuk menampilkan project, tools, dan eksplorasi teknis secara terstruktur dan rapi.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Halaman</h4>
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="projects.html">Proyek</a>
+            <a href="tools.html">Tools</a>
+            <a href="about.html">Tentang</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <div class="footer-links">
+            <a href="contact.html">Halaman Kontak</a>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Core Cipher Labs. All rights reserved.</span>
+        <span>Halaman kontak sederhana dengan GitHub sebagai jalur utama.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("nav");
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("open");
+      });
+    }
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    reveals.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>

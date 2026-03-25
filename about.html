@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Core Cipher Labs</title>
+  <meta
+    name="description"
+    content="Halaman tentang Core Cipher Labs — ruang personal untuk project, tools, dan riset keamanan siber."
+  />
+
+  <style>
+    :root {
+      --bg: #0f1318;
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-2: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f2ede4;
+      --muted: #b7b0a3;
+      --muted-2: #8f8779;
+      --accent: #c5a56a;
+      --accent-soft: rgba(197, 165, 106, 0.12);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      --container: 1180px;
+      --transition: 0.35s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(197, 165, 106, 0.10), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(197, 165, 106, 0.06), transparent 18%),
+        linear-gradient(180deg, #0f1318 0%, #151a20 45%, #101419 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 88%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(197, 165, 106, 0.18);
+      color: #e5cfaa;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(197, 165, 106, 0.45);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+
+    .section-head p {
+      max-width: 430px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 16px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #d4b37a, #b9945c);
+      color: #14181d;
+      box-shadow: 0 14px 30px rgba(197, 165, 106, 0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-2px);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(15, 19, 24, 0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      object-fit: cover;
+      padding: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-links a {
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      font-size: 1.1rem;
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -170px;
+      top: -120px;
+      border-radius: 50%;
+      border: 1px solid rgba(197,165,106,0.14);
+      box-shadow:
+        0 0 0 42px rgba(197,165,106,0.04),
+        0 0 0 96px rgba(197,165,106,0.02);
+      pointer-events: none;
+    }
+
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,165,106,0.08), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-main {
+      padding: 18px 8px 10px 8px;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      padding-left: 10px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+      margin-bottom: 18px;
+      max-width: 760px;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .owner-card,
+    .side-panel {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .owner-top {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .owner-photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      box-shadow: var(--shadow);
+    }
+
+    .owner-meta small,
+    .side-panel small {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted-2);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+    }
+
+    .owner-meta h3,
+    .side-panel h3 {
+      font-size: 1.24rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .owner-meta p,
+    .side-panel p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .owner-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .owner-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .owner-item span {
+      color: var(--muted-2);
+      font-size: 0.92rem;
+    }
+
+    .owner-item strong {
+      color: var(--text);
+      font-size: 0.94rem;
+      text-align: right;
+    }
+
+    .mini-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .mini-points span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .mini-points span::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 20px;
+    }
+
+    .content-card,
+    .principle-card {
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .content-card h3,
+    .principle-card h3 {
+      font-size: 1.32rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .content-card p,
+    .principle-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .focus-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .focus-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .focus-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .focus-item span {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .principle-card .num {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #e5cfaa;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(135deg, rgba(197,165,106,0.10), rgba(255,255,255,0.03)),
+        rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      top: -70px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(197,165,106,0.18), transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .cta-copy h2 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .cta-copy p {
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer {
+      margin-top: 88px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 24px;
+      padding: 42px 0;
+    }
+
+    .footer-brand p,
+    .footer-col a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-brand p {
+      max-width: 420px;
+      margin-top: 14px;
+    }
+
+    .footer .brand-logo {
+      width: 68px;
+      height: 68px;
+    }
+
+    .footer-col h4 {
+      font-size: 1rem;
+      margin-bottom: 14px;
+      color: #f1e8d8;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-bottom {
+      padding: 18px 0 28px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .content-grid,
+      .principles-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links,
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav.open .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 20px;
+        background: rgba(18, 23, 29, 0.98);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-grid,
+      .content-grid,
+      .principles-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main {
+        min-height: auto;
+      }
+
+      .cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--container), calc(100% - 20px));
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.45rem;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .owner-top {
+        grid-template-columns: 1fr;
+      }
+
+      .content-card,
+      .principle-card {
+        padding: 24px;
+      }
+
+      .brand-logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .hero-shell,
+      .cta-box {
+        padding: 18px;
+      }
+
+      .hero-copy {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a href="index.html" class="brand">
+          <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+          <div class="brand-text">
+            <strong>Core Cipher Labs</strong>
+            <span>Project, tools, dan Cyber Security</span>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html">Beranda</a>
+          <a href="projects.html">Proyek</a>
+          <a href="tools.html">Tools</a>
+          <a href="about.html" class="active">Tentang</a>
+          <a href="contact.html">Kontak</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="contact.html" class="btn btn-secondary">Kontak</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell reveal">
+          <div class="hero-grid">
+            <div class="hero-main">
+              <div class="hero-copy">
+                <div class="badge">About Core Cipher Labs</div>
+                <h1>Dibangun dengan fokus, arah yang jelas, dan sekedar hobby</h1>
+                <p>
+                  Core Cipher Labs adalah ruang personal untuk menampilkan project,
+                  tools, dan eksperimen cyber security yang dibuat berdasarkan hobby semata.
+                </p>
+
+                <div class="hero-actions">
+                  <a href="projects.html" class="btn btn-primary">Lihat Proyek</a>
+                  <a href="tools.html" class="btn btn-secondary">Jelajahi Tools</a>
+                </div>
+              </div>
+            </div>
+
+            <aside class="hero-side">
+              <div class="owner-card">
+                <div class="owner-top">
+                  <img src="owner.png" alt="Foto pemilik Core Cipher Labs" class="owner-photo" />
+                  <div class="owner-meta">
+                    <small>Owner</small>
+                    <h3>Dhafir</h3>
+                    <p>Pemilik dan pengembang Core Cipher Labs</p>
+                  </div>
+                </div>
+
+                <div class="owner-list">
+                  <div class="owner-item">
+                    <span>Peran</span>
+                    <strong>Owner & Builder</strong>
+                  </div>
+                  <div class="owner-item">
+                    <span>Fokus</span>
+                    <strong>Cybersecurity Projects (Hobby)</strong>
+                  </div>
+                  <div class="owner-item">
+                    <span>Ruang Lingkup</span>
+                    <strong>Tools, Research, Experiments (Hobby)</strong>
+                  </div>
+                  <div class="owner-item">
+                    <span>Visual Identity</span>
+                    <strong>Visual Consistency</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="side-panel">
+                <small>Identity Notes</small>
+                <h3>Lab Overview</h3>
+                <p>
+                  Ruang untuk merangkum arah, karakter, dan positioning sebagai proyek hobby.
+                </p>
+
+                <div class="mini-points">
+                  <span>Menjelaskan identitas dan peran pengembang</span>
+                  <span>Mempertegas visi, tujuan, dan fokus lab</span>
+                  <span>Melengkapi struktur utama platform secara menyeluruh</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Identity</div>
+            <h2>Ruang personal yang dibuat untuk merapikan pekerjaan teknis dengan struktur yang lebih baik.</h2>
+          </div>
+          <p>
+            Halaman ini menjelaskan siapa pemilik Core Cipher Labs, apa tujuan lab ini,
+            dan bagaimana arah pengembangannya ke depan.
+          </p>
+        </div>
+
+        <div class="content-grid">
+          <div class="content-card reveal">
+            <h3>Tentang lab ini</h3>
+            <p>
+              Core Cipher Labs merupakan ruang personal berbasis hobby yang digunakan untuk menampilkan proyek cybersecurity, tools, dan eksperimen teknis secara terstruktur dan terarah.
+            </p>
+            <p>
+              Fokus utamanya bukan hanya pada penyajian hasil, tetapi juga sebagai media eksplorasi, pembelajaran, dan dokumentasi perkembangan teknis secara berkelanjutan.
+            </p>
+            <p>
+              Dengan pendekatan terorganisir, setiap bagian memiliki fungsi yang jelas, mulai dari pengantar, proyek, tools, hingga representasi aktivitas dan minat dalam bidang yang dikembangkan.
+            </p>
+          </div>
+
+          <div class="content-card reveal">
+            <h3>Fokus utama</h3>
+            <div class="focus-list">
+              <div class="focus-item">
+                <strong>Cybersecurity Projects</strong>
+                <span>Menampilkan project aktif, project yang direncanakan, dan eksperimen teknis yang sedang berkembang.</span>
+              </div>
+              <div class="focus-item">
+                <strong>Tools & Utilities</strong>
+                <span>Menampung script, automation, helper, dan alat bantu internal untuk workflow teknis.</span>
+              </div>
+              <div class="focus-item">
+                <strong>Research Direction</strong>
+                <span>Membuka ruang untuk eksplorasi, dokumentasi, serta catatan pengembangan jangka panjang.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Owner Profile</div>
+            <h2>Pemilik Core Cipher Labs dan prinsip yang membentuk arah website ini.</h2>
+          </div>
+          <p>
+            Bagian ini memberi sentuhan personal tanpa membuat tampilan halaman menjadi berlebihan.
+          </p>
+        </div>
+
+        <div class="principles-grid">
+          <div class="principle-card reveal">
+            <span class="num">01 — Ownership</span>
+            <h3>Dibangun dan dikelola oleh Dhafir</h3>
+            <p>
+              Core Cipher Labs merupakan workspace personal berbasis hobby yang dikembangkan oleh Dhafir untuk mengeksplorasi, mengelola, dan mendokumentasikan inisiatif di bidang cybersecurity.
+            </p>
+          </div>
+
+          <div class="principle-card reveal">
+            <span class="num">02 — Direction</span>
+            <h3>Dibuat untuk Hobby</h3>
+            <p>
+              Dibangun untuk bagian dari pengembangan hobby Platform ini dirancang untuk berkembang seiring bertambahnya proyek, tools, dan dokumentasi yang dieksplorasi secara personal.
+            </p>
+          </div>
+
+          <div class="principle-card reveal">
+            <span class="num">03 — Presentation</span>
+            <h3>Minimal, terstruktur, dan fokus</h3>
+            <p>
+              Pendekatan visual dirancang sederhana dan terkendali untuk menjaga kejelasan informasi serta mencerminkan karakter teknis yang konsisten.
+            </p>
+          </div>
+
+          <div class="principle-card reveal">
+            <span class="num">04 — Purpose</span>
+            <h3>Ruang eksplorasi project dan tools</h3>
+            <p>
+              Core Cipher Labs berfungsi sebagai wadah personal berbasis hobby untuk mengumpulkan dan menampilkan proyek serta tools yang relevan, sekaligus sebagai sarana eksplorasi dan pengembangan teknis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">
+            <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+            <div class="brand-text">
+              <strong>Core Cipher Labs</strong>
+              <span>Project, Tools, dan riset Cyber Security</span>
+            </div>
+          </div>
+          <p>
+            Ruang personal cybersecurity berbasis hobby milik pribadi untuk menampilkan project, tools, dan eksplorasi teknis secara terstruktur dan rapi.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Halaman</h4>
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="projects.html">Proyek</a>
+            <a href="tools.html">Tools</a>
+            <a href="about.html">Tentang</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <div class="footer-links">
+            <a href="contact.html">Halaman Kontak</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Core Cipher Labs. All rights reserved.</span>
+        <span>Halaman tentang yang menampilkan identitas pemilik dan arah lab.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("nav");
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("open");
+      });
+    }
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    reveals.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
