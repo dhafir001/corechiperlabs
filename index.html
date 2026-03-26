@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Core Chiper Labs</title>
+  <title>Core Chiper Labs | Web Security Research & Offensive Tooling</title>
   <meta
     name="description"
-    content="Core Chiper Labs adalah website personal untuk Project, tools, dan riset Cyber Security"
+    content="Core Chiper Labs is a personal cybersecurity portfolio focused on web application security, penetration testing, offensive tooling, and hands-on security research."
   />
 
   <style>
     :root {
-      --bg: #0f1318;
+      --bg: #0b0f14;
       --panel: rgba(255, 255, 255, 0.05);
       --border: rgba(255, 255, 255, 0.08);
-      --text: #f2ede4;
-      --muted: #b7b0a3;
-      --muted-2: #8f8779;
-      --accent: #c5a56a;
-      --accent-soft: rgba(197, 165, 106, 0.12);
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      --text: #f5f7fa;
+      --muted: #aab3bf;
+      --muted-2: #7d8794;
+      --accent: #4df6b2;
+      --accent-soft: rgba(77, 246, 178, 0.10);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
       --container: 1180px;
       --transition: 0.35s ease;
     }
@@ -40,9 +40,9 @@
       line-height: 1.6;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at top left, rgba(197, 165, 106, 0.10), transparent 24%),
-        radial-gradient(circle at 90% 12%, rgba(197, 165, 106, 0.06), transparent 18%),
-        linear-gradient(180deg, #0f1318 0%, #151a20 45%, #101419 100%);
+        radial-gradient(circle at top left, rgba(77, 246, 178, 0.08), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(77, 246, 178, 0.05), transparent 18%),
+        linear-gradient(180deg, #0b0f14 0%, #101722 45%, #0b0f14 100%);
     }
 
     body::before {
@@ -91,8 +91,8 @@
       padding: 10px 16px;
       border-radius: 999px;
       background: var(--accent-soft);
-      border: 1px solid rgba(197, 165, 106, 0.18);
-      color: #e5cfaa;
+      border: 1px solid rgba(77, 246, 178, 0.18);
+      color: #b5ffe3;
       font-size: 0.78rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -105,7 +105,7 @@
       height: 8px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 16px rgba(197, 165, 106, 0.45);
+      box-shadow: 0 0 16px rgba(77, 246, 178, 0.45);
     }
 
     .section-head {
@@ -143,9 +143,9 @@
     }
 
     .btn-primary {
-      background: linear-gradient(180deg, #d4b37a, #b9945c);
-      color: #14181d;
-      box-shadow: 0 14px 30px rgba(197, 165, 106, 0.24);
+      background: linear-gradient(180deg, #72ffd0, #2fd4a1);
+      color: #07110d;
+      box-shadow: 0 14px 30px rgba(77, 246, 178, 0.22);
     }
 
     .btn-primary:hover {
@@ -168,7 +168,7 @@
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(18px);
-      background: rgba(15, 19, 24, 0.76);
+      background: rgba(11, 15, 20, 0.78);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
@@ -277,10 +277,10 @@
       right: -170px;
       top: -120px;
       border-radius: 50%;
-      border: 1px solid rgba(197,165,106,0.14);
+      border: 1px solid rgba(77,246,178,0.14);
       box-shadow:
-        0 0 0 42px rgba(197,165,106,0.04),
-        0 0 0 96px rgba(197,165,106,0.02);
+        0 0 0 42px rgba(77,246,178,0.04),
+        0 0 0 96px rgba(77,246,178,0.02);
       pointer-events: none;
     }
 
@@ -292,7 +292,7 @@
       width: 240px;
       height: 240px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(197,165,106,0.08), transparent 65%);
+      background: radial-gradient(circle, rgba(77,246,178,0.08), transparent 65%);
       pointer-events: none;
     }
 
@@ -312,7 +312,7 @@
     }
 
     .hero-copy {
-      max-width: 700px;
+      max-width: 720px;
       padding-left: 10px;
     }
 
@@ -321,13 +321,13 @@
       line-height: 0.94;
       letter-spacing: -0.065em;
       margin-bottom: 18px;
-      max-width: 760px;
+      max-width: 780px;
     }
 
     .hero-copy p {
       color: var(--muted);
       font-size: 1.05rem;
-      max-width: 620px;
+      max-width: 640px;
       margin-bottom: 28px;
     }
 
@@ -357,7 +357,7 @@
       line-height: 1;
       margin-bottom: 8px;
       letter-spacing: -0.04em;
-      color: #f6ecda;
+      color: #d9fff0;
     }
 
     .stat-card span {
@@ -377,7 +377,7 @@
       border-radius: 34px;
       border: 1px solid rgba(255,255,255,0.08);
       background:
-        radial-gradient(circle at center, rgba(197,165,106,0.12), transparent 35%),
+        radial-gradient(circle at center, rgba(77,246,178,0.12), transparent 35%),
         rgba(255,255,255,0.04);
       overflow: hidden;
       display: flex;
@@ -391,7 +391,7 @@
     .ring-3 {
       position: absolute;
       border-radius: 50%;
-      border: 1px solid rgba(197,165,106,0.14);
+      border: 1px solid rgba(77,246,178,0.14);
     }
 
     .ring { width: 180px; height: 180px; }
@@ -418,7 +418,7 @@
       height: 10px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 20px rgba(197,165,106,0.46);
+      box-shadow: 0 0 20px rgba(77,246,178,0.46);
       z-index: 1;
     }
 
@@ -432,14 +432,21 @@
       left: 72px;
     }
 
-    .side-panel {
-      padding: 22px;
+    .side-panel,
+    .panel-box,
+    .project-card,
+    .tool-card,
+    .proof-card,
+    .about-box,
+    .list-box {
+      padding: 24px;
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,0.07);
       background: rgba(255,255,255,0.04);
     }
 
-    .side-panel small {
+    .side-panel small,
+    .panel-box small {
       display: block;
       margin-bottom: 10px;
       color: var(--muted-2);
@@ -448,13 +455,19 @@
       font-size: 0.74rem;
     }
 
-    .side-panel h3 {
+    .side-panel h3,
+    .panel-box h3,
+    .about-box h3,
+    .list-box h3 {
       font-size: 1.24rem;
       margin-bottom: 8px;
       letter-spacing: -0.03em;
     }
 
-    .side-panel p {
+    .side-panel p,
+    .panel-box p,
+    .about-box p,
+    .list-box p {
       color: var(--muted);
       font-size: 0.95rem;
     }
@@ -497,97 +510,78 @@
       font-size: 0.95rem;
     }
 
-    .grid-4 {
+    .about-grid,
+    .projects-grid,
+    .tools-grid,
+    .proof-grid,
+    .footer-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
 
-    .feature-card {
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.04);
-      transition: var(--transition);
+    .about-grid {
+      grid-template-columns: 1.04fr 0.96fr;
     }
 
-    .feature-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(197,165,106,0.18);
-      box-shadow: var(--shadow);
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .feature-thumb {
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: #202831;
+    .tools-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .feature-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.45s ease;
+    .proof-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .feature-card:hover .feature-thumb img {
-      transform: scale(1.04);
-    }
-
-    .feature-body {
-      padding: 22px;
-    }
-
-    .feature-body h3 {
-      font-size: 1.16rem;
-      margin-bottom: 10px;
+    .project-card h3,
+    .tool-card h3,
+    .proof-card h3 {
+      font-size: 1.18rem;
+      margin-bottom: 12px;
       letter-spacing: -0.02em;
     }
 
-    .feature-body p {
+    .project-card p,
+    .tool-card p,
+    .proof-card p {
       color: var(--muted);
       font-size: 0.94rem;
       margin-bottom: 16px;
     }
 
-    .feature-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #efdcb8;
-      font-weight: 600;
-    }
-
-    .about-grid {
+    .meta-list {
       display: grid;
-      grid-template-columns: 1.04fr 0.96fr;
-      gap: 20px;
+      gap: 10px;
+      margin-top: 14px;
     }
 
-    .about-box,
-    .list-box {
-      padding: 30px;
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.04);
+    .meta-item {
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
     }
 
-    .about-box h3,
-    .list-box h3 {
-      font-size: 1.32rem;
-      margin-bottom: 12px;
-      letter-spacing: -0.03em;
+    .meta-item strong {
+      display: block;
+      font-size: 0.82rem;
+      color: #d9fff0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
     }
 
-    .about-box p,
-    .list-box p {
+    .meta-item span {
       color: var(--muted);
-      margin-bottom: 16px;
+      font-size: 0.92rem;
     }
 
     .value-list {
       display: grid;
       gap: 14px;
+      margin-top: 18px;
     }
 
     .value-item {
@@ -614,9 +608,7 @@
     }
 
     .footer-grid {
-      display: grid;
       grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 24px;
       padding: 42px 0;
     }
 
@@ -639,7 +631,7 @@
     .footer-col h4 {
       font-size: 1rem;
       margin-bottom: 14px;
-      color: #f1e8d8;
+      color: #d9fff0;
     }
 
     .footer-links {
@@ -671,8 +663,10 @@
 
     @media (max-width: 1100px) {
       .hero-grid,
-      .grid-4,
       .about-grid,
+      .projects-grid,
+      .tools-grid,
+      .proof-grid,
       .footer-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -708,8 +702,10 @@
       }
 
       .hero-grid,
-      .grid-4,
       .about-grid,
+      .projects-grid,
+      .tools-grid,
+      .proof-grid,
       .footer-grid {
         grid-template-columns: 1fr;
       }
@@ -744,11 +740,6 @@
         width: 100%;
       }
 
-      .about-box,
-      .list-box {
-        padding: 24px;
-      }
-
       .brand-logo {
         width: 60px;
         height: 60px;
@@ -775,24 +766,24 @@
     <div class="container">
       <nav class="nav" id="nav">
         <a href="index.html" class="brand">
-          <img src="logo.png" alt="Logo Core Chiper Labs" class="brand-logo" />
+          <img src="logo.png" alt="Core Chiper Labs logo" class="brand-logo" />
           <div class="brand-text">
             <strong>Core Chiper Labs</strong>
-            <span>Project, tools, dan Cyber Security</span>
+            <span>Web Security Research & Offensive Tooling</span>
           </div>
         </a>
 
         <div class="nav-links">
-          <a href="index.html" class="active">Beranda</a>
-          <a href="projects.html">Proyek</a>
+          <a href="index.html" class="active">Home</a>
+          <a href="projects.html">Projects</a>
           <a href="tools.html">Tools</a>
-          <a href="about.html">Tentang</a>
-          <a href="contact.html">Kontak</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </div>
 
         <div class="nav-actions">
-          <a href="projects.html" class="btn btn-secondary">Lihat Proyek</a>
-          <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+          <a href="projects.html" class="btn btn-secondary">View Projects</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
         </div>
       </nav>
     </div>
@@ -805,30 +796,31 @@
           <div class="hero-grid">
             <div class="hero-main">
               <div class="hero-copy">
-                <div class="badge">Personal Use</div>
-                <h1>A Personal Cybersecurity Lab for Research, Tools, and Experimentation</h1>
+                <div class="badge">Personal Cybersecurity Portfolio</div>
+                <h1>Offensive web security research, pentest labs, and custom tooling built for real-world application testing.</h1>
                 <p>
-                  Core Chiper Labs is a centralized space for collecting projects, experiments, and development notes in one easily accessible place.
+                  I focus on web application security, vulnerability research, and security automation—building practical tools,
+                  reproducing attack paths, and documenting technical projects that reflect an offensive security mindset.
                 </p>
 
                 <div class="hero-actions">
-                  <a href="projects.html" class="btn btn-primary">Lihat Proyek</a>
-                  <a href="tools.html" class="btn btn-secondary">Lihat Tools</a>
+                  <a href="projects.html" class="btn btn-primary">View Projects</a>
+                  <a href="tools.html" class="btn btn-secondary">Explore Tools</a>
                 </div>
               </div>
 
               <div class="hero-stats">
                 <div class="stat-card">
-                  <strong>Proyek</strong>
-                  <span>Berisi pekerjaan yang sedang dibuat, diuji, atau dikembangkan lebih lanjut.</span>
+                  <strong>Web App Security</strong>
+                  <span>Hands-on testing across authentication, access control, input handling, and business logic flaws.</span>
                 </div>
                 <div class="stat-card">
-                  <strong>Tools</strong>
-                  <span>Kumpulan script, utility, dan alat bantu untuk kebutuhan teknis tertentu.</span>
+                  <strong>Custom Tooling</strong>
+                  <span>Python- and script-based utilities for reconnaissance, testing workflows, and repeatable security tasks.</span>
                 </div>
                 <div class="stat-card">
-                  <strong>Riset</strong>
-                  <span>Catatan eksplorasi, percobaan, dan topik yang sedang dipelajari.</span>
+                  <strong>Practical Labs</strong>
+                  <span>Structured lab work through CTFs, simulation environments, and offensive security platforms.</span>
                 </div>
               </div>
             </div>
@@ -840,21 +832,21 @@
                 <span class="ring-3"></span>
                 <span class="dot"></span>
                 <span class="dot-2"></span>
-                <img src="logo.png" alt="Logo besar Core Chiper Labs" />
+                <img src="logo.png" alt="Core Chiper Labs emblem" />
               </div>
 
               <div class="side-panel">
-                <small>Fokus</small>
-                <h3>Fokus Utama</h3>
+                <small>Core Focus</small>
+                <h3>What this lab is built for</h3>
                 <p>
-                  Website ini dipakai untuk merangkum hal-hal yang sedang dikerjakan,
-                  mulai dari proyek mandiri, tools yang dibuat sendiri, sampai eksplorasi teknis.
+                  Core Chiper Labs is a focused security portfolio showcasing offensive web testing, exploit simulation,
+                  and internal tooling designed to support technical research and hands-on assessment workflows.
                 </p>
 
                 <div class="mini-points">
-                  <span>Proyek yang sedang berjalan</span>
-                  <span>Tools dan utility buatan sendiri</span>
-                  <span>Catatan riset dan eksplorasi</span>
+                  <span>Web application attack surface analysis</span>
+                  <span>Security scripts and testing automation</span>
+                  <span>Lab-driven pentest and exploit validation</span>
                 </div>
               </div>
             </aside>
@@ -863,121 +855,199 @@
 
         <div class="highlight-bar reveal">
           <p>
-            Semua bagian disusun supaya pengunjung bisa langsung melihat apa saja yang sedang dikerjakan di Core Chiper Labs.
+            Built to show recruiters and security teams exactly where the specialization is: web application security, practical pentesting, and tool-assisted offensive testing.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="about">
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="badge">Isi Website</div>
-            <h2>Jelajahi berbagai kategori di Core Chiper Labs melalui navigasi halaman ini.</h2>
+            <div class="badge">About</div>
+            <h2>A focused introduction to the work behind this cybersecurity lab.</h2>
           </div>
           <p>
-          </p>
-        </div>
-
-        <div class="grid-4">
-          <article class="feature-card reveal">
-            <div class="feature-thumb">
-              <img src="project.png" alt="Halaman proyek" />
-            </div>
-            <div class="feature-body">
-              <h3>Proyek</h3>
-              <p>
-                Berisi proyek yang sedang dibuat, eksperimen yang sedang diuji, dan pekerjaan yang masih berjalan.
-              </p>
-              <a href="projects.html" class="feature-link">Buka halaman <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-thumb">
-              <img src="tools.png" alt="Halaman tools" />
-            </div>
-            <div class="feature-body">
-              <h3>Tools</h3>
-              <p>
-                Tempat untuk menampilkan utility, script, dan alat bantu yang dibuat untuk kebutuhan tertentu.
-              </p>
-              <a href="tools.html" class="feature-link">Buka halaman <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-thumb">
-              <img src="about.png" alt="Halaman tentang" />
-            </div>
-            <div class="feature-body">
-              <h3>Tentang</h3>
-              <p>
-                Menjelaskan singkat latar belakang website ini dan apa yang menjadi fokus utamanya.
-              </p>
-              <a href="about.html" class="feature-link">Buka halaman <span>→</span></a>
-            </div>
-          </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-thumb">
-              <img src="contact.png" alt="Halaman kontak" />
-            </div>
-            <div class="feature-body">
-              <h3>Kontak</h3>
-              <p>
-                Berisi jalur komunikasi untuk email, GitHub, dan akun lain yang ingin ditampilkan.
-              </p>
-              <a href="contact.html" class="feature-link">Buka halaman <span>→</span></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="badge">Tentang Beranda</div>
-            <h2>Halaman depan dipakai untuk memberi gambaran singkat tentang isi Core Chiper Labs.</h2>
-          </div>
-          <p>
-            Dari sini pengunjung bisa langsung melihat bagian utama yang tersedia tanpa harus mencari terlalu jauh.
+            Technical, hands-on, and centered on practical security testing rather than broad generalist claims.
           </p>
         </div>
 
         <div class="about-grid">
           <div class="about-box reveal">
-            <h3>Fungsi halaman ini</h3>
+            <h3>Security profile</h3>
             <p>
-              Beranda menjadi titik awal untuk melihat isi website secara singkat.
-              Bagian ini memperkenalkan fokus utama lalu mengarahkan pengunjung ke halaman yang lebih spesifik.
+              I am a cybersecurity practitioner focused on web application security, offensive testing workflows, and security automation.
             </p>
             <p>
-              Dengan begitu, isi website tetap mudah diikuti dan setiap bagian punya peran yang jelas.
+              My work centers on identifying exploitable weaknesses, building small tools to accelerate testing, and documenting projects with a clear technical outcome.
             </p>
-            <a href="about.html" class="btn btn-secondary">Baca selengkapnya</a>
+            <p>
+              This site serves as a curated portfolio of projects, scripts, labs, and security experiments relevant to recruiters, engineers, and security teams.
+            </p>
           </div>
 
           <div class="list-box reveal">
-            <h3>Yang ditampilkan</h3>
+            <h3>Primary areas of focus</h3>
             <div class="value-list">
               <div class="value-item">
-                <strong>Proyek aktif</strong>
-                <span>Untuk menampilkan apa yang sedang dikerjakan atau dikembangkan.</span>
+                <strong>Web Application Security</strong>
+                <span>Authentication flaws, access control issues, insecure input handling, and business logic abuse.</span>
               </div>
               <div class="value-item">
-                <strong>Tools buatan sendiri</strong>
-                <span>Untuk menyimpan script, utility, dan alat bantu teknis lainnya.</span>
+                <strong>Pentesting Workflow</strong>
+                <span>Reconnaissance, enumeration, exploit validation, and reporting-oriented testing methodology.</span>
               </div>
               <div class="value-item">
-                <strong>Informasi kontak</strong>
-                <span>Untuk memudahkan orang menghubungi atau melihat profil lebih lanjut.</span>
+                <strong>Security Automation</strong>
+                <span>Custom scripts for endpoint discovery, parameter analysis, payload testing, and workflow efficiency.</span>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Featured Projects</div>
+            <h2>Selected projects that demonstrate offensive testing, technical depth, and measurable outcomes.</h2>
+          </div>
+          <p>
+            Each project reflects a practical security problem, a technical implementation, and a clear result.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <h3>Attack Surface Mapper for Modern Web Apps</h3>
+            <p>
+              A reconnaissance project built to enumerate subdomains, fingerprint technologies, collect endpoints,
+              and prioritize exposed attack surface across multi-service web environments.
+            </p>
+            <div class="meta-list">
+              <div class="meta-item">
+                <strong>Tech Stack</strong>
+                <span>Python, Bash, httpx, Subfinder, Katana, JSON reporting</span>
+              </div>
+              <div class="meta-item">
+                <strong>Result</strong>
+                <span>Reduced manual recon time and produced structured target inventories for faster follow-up testing.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <h3>Broken Access Control Lab Simulation</h3>
+            <p>
+              A controlled web application lab designed to reproduce IDOR, horizontal privilege escalation,
+              and role-based access control failures for assessment practice and demonstration.
+            </p>
+            <div class="meta-list">
+              <div class="meta-item">
+                <strong>Tech Stack</strong>
+                <span>Node.js, Express, JWT, Docker, Burp Suite</span>
+              </div>
+              <div class="meta-item">
+                <strong>Result</strong>
+                <span>Built repeatable exploit scenarios and documented test cases aligned with real pentest methodology.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <h3>Automated XSS Payload Validation Framework</h3>
+            <p>
+              A lightweight testing framework for validating reflected and stored XSS behavior across parameters,
+              rendering contexts, and common input filtering patterns.
+            </p>
+            <div class="meta-list">
+              <div class="meta-item">
+                <strong>Tech Stack</strong>
+                <span>Python, Playwright, HTML parsing, custom payload sets</span>
+              </div>
+              <div class="meta-item">
+                <strong>Result</strong>
+                <span>Improved coverage during input testing and quickly highlighted exploitable rendering paths.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Tools</div>
+            <h2>Custom scripts and utilities built to support offensive security workflows.</h2>
+          </div>
+          <p>
+            Short, technical, and purpose-built for repeatable testing rather than generic utility collections.
+          </p>
+        </div>
+
+        <div class="tools-grid">
+          <article class="tool-card reveal">
+            <h3>ParamScope</h3>
+            <p>
+              Extracts, normalizes, and clusters query parameters from archived URLs and live crawling output to identify high-value test targets.
+            </p>
+          </article>
+
+          <article class="tool-card reveal">
+            <h3>ReconFlow</h3>
+            <p>
+              Automates recon pipelines including subdomain enumeration, HTTP probing, title capture, tech detection, and endpoint collection.
+            </p>
+          </article>
+
+          <article class="tool-card reveal">
+            <h3>AuthTrace</h3>
+            <p>
+              A session analysis helper for reviewing authentication state changes, token handling, and insecure authorization behavior during testing.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proof">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Proof of Practice</div>
+            <h2>Hands-on signals that support technical credibility.</h2>
+          </div>
+          <p>
+            Practical experience built through labs, challenge environments, and vulnerability simulation work.
+          </p>
+        </div>
+
+        <div class="proof-grid">
+          <article class="proof-card reveal">
+            <h3>CTF Participation</h3>
+            <p>
+              Regularly works through web exploitation, privilege escalation, and forensic-style challenges to sharpen problem-solving under constraints.
+            </p>
+          </article>
+
+          <article class="proof-card reveal">
+            <h3>TryHackMe & Hack The Box Labs</h3>
+            <p>
+              Uses guided and active lab environments to practice enumeration, exploitation, post-exploitation concepts, and attacker workflows.
+            </p>
+          </article>
+
+          <article class="proof-card reveal">
+            <h3>Vulnerability Simulations</h3>
+            <p>
+              Recreates common web vulnerabilities such as XSS, IDOR, weak access control, insecure file handling, and injection paths in isolated lab setups.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -988,31 +1058,31 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="brand">
-            <img src="logo.png" alt="Logo Core Chiper Labs" class="brand-logo" />
+            <img src="logo.png" alt="Core Chiper Labs logo" class="brand-logo" />
             <div class="brand-text">
               <strong>Core Chiper Labs</strong>
-              <span>Project, Tools, dan riset Cyber Security</span>
+              <span>Web Security Research & Offensive Tooling</span>
             </div>
           </div>
           <p>
-            Ruang personal cybersecurity berbasis hobby milik pribadi untuk menampilkan project, tools, dan eksplorasi teknis secara terstruktur dan rapi.
+            A personal cybersecurity lab focused on web application security, pentesting practice, and custom offensive tooling.
           </p>
         </div>
 
         <div class="footer-col">
-          <h4>Halaman</h4>
+          <h4>Sections</h4>
           <div class="footer-links">
-            <a href="index.html">Beranda</a>
-            <a href="projects.html">Proyek</a>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
             <a href="tools.html">Tools</a>
-            <a href="about.html">Tentang</a>
+            <a href="about.html">About</a>
           </div>
         </div>
 
         <div class="footer-col">
-          <h4>Kontak</h4>
+          <h4>Connect</h4>
           <div class="footer-links">
-            <a href="contact.html">Halaman Kontak</a>
+            <a href="contact.html">Contact Page</a>
             <a href="#">GitHub</a>
             <a href="#">Email</a>
             <a href="#">LinkedIn</a>
@@ -1022,7 +1092,7 @@
 
       <div class="footer-bottom">
         <span>© 2026 Core Chiper Labs. All rights reserved.</span>
-        <span>Website personal untuk Project, Tools, dan riset Cyber Security.</span>
+        <span>Cybersecurity portfolio focused on web security, pentesting, and custom tools.</span>
       </div>
     </div>
   </footer>
