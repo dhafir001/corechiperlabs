@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Core Cipher Labs</title>
+  <meta
+    name="description"
+    content="Explore the projects behind Core Cipher Labs — a collection of tools, systems, and cybersecurity experiments built with curiosity and purpose."
+  />
+
+  <style>
+    :root {
+      --bg: #0f1318;
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-2: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f2ede4;
+      --muted: #b7b0a3;
+      --muted-2: #8f8779;
+      --accent: #c5a56a;
+      --accent-soft: rgba(197, 165, 106, 0.12);
+      --success: rgba(144, 181, 143, 0.16);
+      --success-text: #d8e8d2;
+      --planned: rgba(132, 158, 196, 0.16);
+      --planned-text: #d8e4f4;
+      --research: rgba(199, 162, 97, 0.16);
+      --research-text: #f1dfc1;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      --container: 1180px;
+      --transition: 0.35s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(197, 165, 106, 0.10), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(197, 165, 106, 0.06), transparent 18%),
+        linear-gradient(180deg, #0f1318 0%, #151a20 45%, #101419 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 88%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(197, 165, 106, 0.18);
+      color: #e5cfaa;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(197, 165, 106, 0.45);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+
+    .section-head p {
+      max-width: 430px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 16px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #d4b37a, #b9945c);
+      color: #14181d;
+      box-shadow: 0 14px 30px rgba(197, 165, 106, 0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-2px);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(15, 19, 24, 0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      object-fit: cover;
+      padding: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-links a {
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      font-size: 1.1rem;
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -170px;
+      top: -120px;
+      border-radius: 50%;
+      border: 1px solid rgba(197,165,106,0.14);
+      box-shadow:
+        0 0 0 42px rgba(197,165,106,0.04),
+        0 0 0 96px rgba(197,165,106,0.02);
+      pointer-events: none;
+    }
+
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,165,106,0.08), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-main {
+      padding: 18px 8px 10px 8px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      padding-left: 10px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+      margin-bottom: 18px;
+      max-width: 760px;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding-left: 10px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+      color: #f6ecda;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .side-panel {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .side-panel small {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted-2);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+    }
+
+    .side-panel h3 {
+      font-size: 1.24rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .side-panel p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .mini-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .mini-points span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .mini-points span::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .filter-bar {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.035);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px 28px;
+    }
+
+    .filter-bar p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 650px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(197,165,106,0.18);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(197,165,106,0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .project-thumb {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #202831;
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .project-card:hover .project-thumb img {
+      transform: scale(1.04);
+    }
+
+    .project-body {
+      padding: 22px;
+    }
+
+    .project-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .project-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+    }
+
+    .status-ongoing {
+      color: var(--success-text);
+      background: var(--success);
+      border-color: rgba(144, 181, 143, 0.24);
+    }
+
+    .status-planned {
+      color: var(--planned-text);
+      background: var(--planned);
+      border-color: rgba(132, 158, 196, 0.24);
+    }
+
+    .status-research {
+      color: var(--research-text);
+      background: var(--research);
+      border-color: rgba(199, 162, 97, 0.24);
+    }
+
+    .project-body h3 {
+      font-size: 1.16rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 16px;
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .meta-item span {
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .meta-item strong {
+      color: var(--text);
+      font-size: 0.92rem;
+      text-align: right;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #efdcb8;
+      font-weight: 600;
+    }
+
+    .project-link span {
+      transition: transform var(--transition);
+    }
+
+    .project-card:hover .project-link span {
+      transform: translateX(4px);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .info-card {
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .info-card .num {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #e5cfaa;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.32rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .info-card p {
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 88px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 24px;
+      padding: 42px 0;
+    }
+
+    .footer-brand p,
+    .footer-col a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-brand p {
+      max-width: 420px;
+      margin-top: 14px;
+    }
+
+    .footer .brand-logo {
+      width: 68px;
+      height: 68px;
+    }
+
+    .footer-col h4 {
+      font-size: 1rem;
+      margin-bottom: 14px;
+      color: #f1e8d8;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-bottom {
+      padding: 18px 0 28px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .project-grid,
+      .info-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links,
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav.open .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 20px;
+        background: rgba(18, 23, 29, 0.98);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-grid,
+      .project-grid,
+      .info-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main {
+        min-height: auto;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--container), calc(100% - 20px));
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.45rem;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .info-card {
+        padding: 24px;
+      }
+
+      .brand-logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .hero-shell {
+        padding: 18px;
+      }
+
+      .hero-copy,
+      .hero-stats {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a href="index.html" class="brand">
+          <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+          <div class="brand-text">
+            <strong>Core Cipher Labs</strong>
+            <span>Project, tools, dan Cyber Security</span>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html">Beranda</a>
+          <a href="projects.html" class="active">Proyek</a>
+          <a href="tools.html">Tools</a>
+          <a href="about.html">Tentang</a>
+          <a href="contact.html">Kontak</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="tools.html" class="btn btn-secondary">Explore Tools</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell reveal">
+          <div class="hero-grid">
+            <div class="hero-main">
+              <div class="hero-copy">
+                <div class="badge">Projects Directory</div>
+                <h1>Built from curiosity, shaped by experimentation, and focused on practical security.</h1>
+                <p>
+                  Halaman ini berisi kumpulan proyek yang dikembangkan di Core Cipher Labs —
+                  mulai dari tools yang sudah selesai, sistem yang terus disempurnakan,
+                  sampai eksperimen yang lahir dari proses belajar, trial, and exploration.
+                </p>
+
+                <div class="hero-actions">
+                  <a href="tools.html" class="btn btn-primary">Explore Tools</a>
+                  <a href="about.html" class="btn btn-secondary">About The Lab</a>
+                </div>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat-card">
+                  <strong>6 Projects</strong>
+                  <span>A curated collection of tools, systems, and security experiments published in this lab.</span>
+                </div>
+                <div class="stat-card">
+                  <strong>Hands-on</strong>
+                  <span>Dibangun dengan pendekatan praktis, bukan hanya konsep, tapi real implementation.</span>
+                </div>
+                <div class="stat-card">
+                  <strong>Evolving</strong>
+                  <span>Beberapa proyek terus berkembang seiring ide baru, evaluasi teknis, dan eksplorasi lanjutan.</span>
+                </div>
+              </div>
+            </div>
+
+            <aside class="hero-side">
+              <div class="side-panel">
+                <small>Project Overview</small>
+                <h3>A clean structure for ideas, systems, and experiments</h3>
+                <p>
+                  Setiap project ditampilkan dengan ringkas namun tetap bermakna,
+                  agar pengunjung bisa memahami arah, fungsi, dan karakter teknisnya dalam sekali lihat.
+                </p>
+
+                <div class="mini-points">
+                  <span>Status proyek ditampilkan dengan lebih jelas</span>
+                  <span>Easy to expand into dedicated detail pages</span>
+                  <span>Visual language tetap selaras dengan identitas website</span>
+                </div>
+              </div>
+
+              <div class="side-panel">
+                <small>Notes</small>
+                <h3>Designed to grow without losing clarity</h3>
+                <p>
+                  Struktur halaman ini dibuat agar tetap nyaman dibaca meski jumlah proyek bertambah,
+                  sehingga konten bisa berkembang without making the interface feel crowded.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="filter-bar reveal">
+          <p>
+            Browse all projects or filter them by category to explore what is currently active,
+            what is being prepared, and what is still in the research phase.
+          </p>
+
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="ongoing">Aktif</button>
+            <button class="filter-btn" data-filter="planned">Rencana</button>
+            <button class="filter-btn" data-filter="research">Riset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Selected Projects</div>
+            <h2>A closer look at the systems, tools, and ideas behind Core Cipher Labs.</h2>
+          </div>
+          <p>
+            Setiap proyek di bawah punya pendekatan yang berbeda,
+            tetapi semuanya lahir dari tujuan yang sama: building useful security-driven work with clarity and intent.
+          </p>
+        </div>
+
+        <div class="project-grid" id="projectGrid">
+          <article class="project-card reveal" data-category="ongoing">
+            <div class="project-thumb">
+              <img src="project1.png" alt="Preview Lock File By CC" />
+            </div>
+            <div class="project-body">
+              <div class="project-badges">
+                <span class="project-tag status-ongoing">Completed</span>
+                <span class="project-tag">Security</span>
+              </div>
+
+              <h3>Lock File By CC</h3>
+              <p>
+                A Telegram-based utility for encrypting and decrypting files with a workflow that feels simple,
+                controlled, and secure. Dilengkapi sesi sementara, access control, dan auto cleanup untuk menjaga data tetap terlindungi.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Focus</span>
+                  <strong>File Encryption & Decryption</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Stack</span>
+                  <strong>Python, Telegram Bot API, Cryptography</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Scope</span>
+                  <strong>Internal Lab Project</strong>
+                </div>
+              </div>
+
+              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="ongoing">
+            <div class="project-thumb">
+              <img src="project2.png" alt="Preview Secure Vault By CC" />
+            </div>
+            <div class="project-body">
+              <div class="project-badges">
+                <span class="project-tag status-ongoing">Completed</span>
+                <span class="project-tag">Security</span>
+              </div>
+
+              <h3>Secure Vault By CC</h3>
+              <p>
+                A secure storage system built for uploading, managing, and retrieving files with per-file encryption
+                and user-based access control. Fokus utamanya adalah privasi, simplicity, and controlled access.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Focus</span>
+                  <strong>Encrypted File Storage</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Stack</span>
+                  <strong>Python, SQLite, Cryptography</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Scope</span>
+                  <strong>Internal Lab Project</strong>
+                </div>
+              </div>
+
+              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="ongoing">
+            <div class="project-thumb">
+              <img src="project3.png" alt="Preview Device Control By CC" />
+            </div>
+            <div class="project-body">
+              <div class="project-badges">
+                <span class="project-tag status-ongoing">Completed</span>
+                <span class="project-tag">Private Access</span>
+              </div>
+
+              <h3>Device Control By CC</h3>
+              <p>
+                Sistem untuk memantau kondisi perangkat, menjalankan fungsi diagnostik,
+                dan mengelola operasi dasar melalui akses yang terotorisasi.
+                Built with a practical mindset for control, monitoring, and safe interaction.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Focus</span>
+                  <strong>System Monitoring & Control</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Stack</span>
+                  <strong>Python, psutil</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Scope</span>
+                  <strong>Internal Lab Project</strong>
+                </div>
+              </div>
+
+              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="planned">
+            <div class="project-thumb">
+              <img src="project4.png" alt="Preview Steganografi" />
+            </div>
+            <div class="project-body">
+              <div class="project-badges">
+                <span class="project-tag status-planned">Advanced</span>
+                <span class="project-tag">Privacy</span>
+              </div>
+
+              <h3>Steganografi</h3>
+              <p>
+                Sebuah sistem untuk menyembunyikan dan mengekstrak pesan di dalam gambar
+                dengan pendekatan steganografi yang dipadukan dengan enkripsi.
+                The goal is not just hiding data, but protecting intent and confidentiality.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Focus</span>
+                  <strong>Steganography & Data Protection</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Stack</span>
+                  <strong>Python, PIL, NumPy, Cryptography</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Scope</span>
+                  <strong>Internal Lab Project</strong>
+                </div>
+              </div>
+
+              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="planned">
+            <div class="project-thumb">
+              <img src="project5.png" alt="Preview Ephemeral Send" />
+            </div>
+            <div class="project-body">
+              <div class="project-badges">
+                <span class="project-tag status-planned">Advanced</span>
+                <span class="project-tag">File Sharing</span>
+              </div>
+
+              <h3>Ephemeral Send</h3>
+              <p>
+                A temporary file-sharing system designed for short-lived access,
+                automatic deletion, and one-time viewing scenarios.
+                Cocok untuk kebutuhan berbagi file yang lebih private, cepat, dan disposable.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Focus</span>
+                  <strong>Temporary Secure File Sharing</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Stack</span>
+                  <strong>Python, FastAPI, SQLite</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Scope</span>
+                  <strong>Internal Lab Project</strong>
+                </div>
+              </div>
+
+              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="research">
+            <div class="project-thumb">
+              <img src="project6.png" alt="Preview Crypto Force" />
+            </div>
+            <div class="project-body">
+              <div class="project-badges">
+                <span class="project-tag status-research">Research</span>
+                <span class="project-tag">Experiment</span>
+              </div>
+
+              <h3>Crypto Force</h3>
+              <p>
+                Platform simulasi untuk mengevaluasi kekuatan password,
+                mengenali pola kelemahan, dan memberi insight yang lebih mudah dipahami.
+                More than a checker, this project explores how security feedback can feel more useful and human.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Focus</span>
+                  <strong>Password Security Analysis</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Stack</span>
+                  <strong>Python, Tkinter</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Scope</span>
+                  <strong>Internal Lab Project</strong>
+                </div>
+              </div>
+
+              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Why This Structure</div>
+            <h2>Simple on the surface, flexible underneath.</h2>
+          </div>
+          <p>
+            Halaman ini dirancang agar tetap terasa ringan dan jelas,
+            bahkan ketika jumlah proyek bertambah dan isi website berkembang lebih jauh.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card reveal">
+            <span class="num">01 — Clear Status</span>
+            <h3>Status yang langsung terbaca</h3>
+            <p>
+              Pengunjung bisa langsung memahami posisi tiap proyek,
+              whether it is active, evolving, or still in the research stage.
+            </p>
+          </div>
+
+          <div class="info-card reveal">
+            <span class="num">02 — Easy to Expand</span>
+            <h3>Mudah berkembang ke halaman yang lebih detail</h3>
+            <p>
+              Saat dibutuhkan, setiap kartu bisa diarahkan ke dedicated project page
+              tanpa harus mengubah struktur besar halaman ini.
+            </p>
+          </div>
+
+          <div class="info-card reveal">
+            <span class="num">03 — Consistent Style</span>
+            <h3>Tetap selaras dengan identitas website</h3>
+            <p>
+              Secara visual, halaman ini menjaga tone yang sama dengan beranda:
+              clean, focused, and quietly technical.
+            </p>
+          </div>
+
+          <div class="info-card reveal">
+            <span class="num">04 — Easy to Maintain</span>
+            <h3>Praktis untuk update konten ke depannya</h3>
+            <p>
+              Menambah project baru, mengganti preview, atau memperbarui deskripsi
+              bisa dilakukan dengan cepat tanpa membuat layout terasa berantakan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">
+            <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+            <div class="brand-text">
+              <strong>Core Cipher Labs</strong>
+              <span>Projects, tools, and cybersecurity exploration</span>
+            </div>
+          </div>
+          <p>
+            Core Cipher Labs is a personal space for building, testing, and documenting security-focused ideas —
+            a place where curiosity meets implementation.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="projects.html">Proyek</a>
+            <a href="tools.html">Tools</a>
+            <a href="about.html">Tentang</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="contact.html">Contact Page</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Core Cipher Labs. All rights reserved.</span>
+        <span>Built with curiosity, structure, and a security-first mindset.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("nav");
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("open");
+      });
+    }
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    reveals.forEach((item) => observer.observe(item));
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.getAttribute("data-filter");
+
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        projectCards.forEach((card) => {
+          const category = card.getAttribute("data-category");
+
+          if (filter === "all" || category === filter) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
