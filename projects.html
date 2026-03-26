@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Core Chiper Labs</title>
   <meta
     name="description"
-    content="Explore the projects behind Core Chiper Labs — a collection of tools, systems, and cybersecurity experiments built with curiosity and purpose."
+    content="Explore cybersecurity projects from Core Chiper Labs, focused on web application security, offensive tooling, secure systems, and hands-on research."
   />
 
   <style>
     :root {
-      --bg: #0f1318;
+      --bg: #0b0f14;
       --panel: rgba(255, 255, 255, 0.05);
       --panel-2: rgba(255, 255, 255, 0.04);
       --border: rgba(255, 255, 255, 0.08);
-      --text: #f2ede4;
-      --muted: #b7b0a3;
-      --muted-2: #8f8779;
-      --accent: #c5a56a;
-      --accent-soft: rgba(197, 165, 106, 0.12);
-      --success: rgba(144, 181, 143, 0.16);
-      --success-text: #d8e8d2;
-      --planned: rgba(132, 158, 196, 0.16);
-      --planned-text: #d8e4f4;
-      --research: rgba(199, 162, 97, 0.16);
-      --research-text: #f1dfc1;
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      --text: #f5f7fa;
+      --muted: #aab3bf;
+      --muted-2: #7d8794;
+      --accent: #4df6b2;
+      --accent-soft: rgba(77, 246, 178, 0.10);
+      --success: rgba(77, 246, 178, 0.12);
+      --success-text: #d8fff0;
+      --planned: rgba(114, 164, 255, 0.14);
+      --planned-text: #dbe8ff;
+      --research: rgba(255, 191, 92, 0.14);
+      --research-text: #ffe8b9;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
       --container: 1180px;
       --transition: 0.35s ease;
     }
@@ -47,9 +47,9 @@
       line-height: 1.6;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at top left, rgba(197, 165, 106, 0.10), transparent 24%),
-        radial-gradient(circle at 90% 12%, rgba(197, 165, 106, 0.06), transparent 18%),
-        linear-gradient(180deg, #0f1318 0%, #151a20 45%, #101419 100%);
+        radial-gradient(circle at top left, rgba(77, 246, 178, 0.08), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(77, 246, 178, 0.05), transparent 18%),
+        linear-gradient(180deg, #0b0f14 0%, #101722 45%, #0b0f14 100%);
     }
 
     body::before {
@@ -99,8 +99,8 @@
       padding: 10px 16px;
       border-radius: 999px;
       background: var(--accent-soft);
-      border: 1px solid rgba(197, 165, 106, 0.18);
-      color: #e5cfaa;
+      border: 1px solid rgba(77, 246, 178, 0.18);
+      color: #b5ffe3;
       font-size: 0.78rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -113,7 +113,7 @@
       height: 8px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 16px rgba(197, 165, 106, 0.45);
+      box-shadow: 0 0 16px rgba(77, 246, 178, 0.45);
     }
 
     .section-head {
@@ -128,11 +128,11 @@
       font-size: clamp(2rem, 3vw, 3.2rem);
       line-height: 1.05;
       letter-spacing: -0.05em;
-      max-width: 760px;
+      max-width: 780px;
     }
 
     .section-head p {
-      max-width: 430px;
+      max-width: 460px;
       color: var(--muted);
     }
 
@@ -151,9 +151,9 @@
     }
 
     .btn-primary {
-      background: linear-gradient(180deg, #d4b37a, #b9945c);
-      color: #14181d;
-      box-shadow: 0 14px 30px rgba(197, 165, 106, 0.24);
+      background: linear-gradient(180deg, #72ffd0, #2fd4a1);
+      color: #07110d;
+      box-shadow: 0 14px 30px rgba(77, 246, 178, 0.22);
     }
 
     .btn-primary:hover {
@@ -176,7 +176,7 @@
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(18px);
-      background: rgba(15, 19, 24, 0.76);
+      background: rgba(11, 15, 20, 0.78);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
@@ -285,10 +285,10 @@
       right: -170px;
       top: -120px;
       border-radius: 50%;
-      border: 1px solid rgba(197,165,106,0.14);
+      border: 1px solid rgba(77,246,178,0.14);
       box-shadow:
-        0 0 0 42px rgba(197,165,106,0.04),
-        0 0 0 96px rgba(197,165,106,0.02);
+        0 0 0 42px rgba(77,246,178,0.04),
+        0 0 0 96px rgba(77,246,178,0.02);
       pointer-events: none;
     }
 
@@ -300,7 +300,7 @@
       width: 240px;
       height: 240px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(197,165,106,0.08), transparent 65%);
+      background: radial-gradient(circle, rgba(77,246,178,0.08), transparent 65%);
       pointer-events: none;
     }
 
@@ -322,7 +322,7 @@
     }
 
     .hero-copy {
-      max-width: 700px;
+      max-width: 720px;
       padding-left: 10px;
     }
 
@@ -337,7 +337,7 @@
     .hero-copy p {
       color: var(--muted);
       font-size: 1.05rem;
-      max-width: 620px;
+      max-width: 640px;
       margin-bottom: 28px;
     }
 
@@ -367,7 +367,7 @@
       line-height: 1;
       margin-bottom: 8px;
       letter-spacing: -0.04em;
-      color: #f6ecda;
+      color: #d9fff0;
     }
 
     .stat-card span {
@@ -381,8 +381,9 @@
       align-content: start;
     }
 
-    .side-panel {
-      padding: 22px;
+    .side-panel,
+    .info-card {
+      padding: 24px;
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,0.07);
       background: rgba(255,255,255,0.04);
@@ -397,13 +398,15 @@
       font-size: 0.74rem;
     }
 
-    .side-panel h3 {
+    .side-panel h3,
+    .info-card h3 {
       font-size: 1.24rem;
       margin-bottom: 8px;
       letter-spacing: -0.03em;
     }
 
-    .side-panel p {
+    .side-panel p,
+    .info-card p {
       color: var(--muted);
       font-size: 0.95rem;
     }
@@ -444,7 +447,7 @@
     .filter-bar p {
       color: var(--muted);
       font-size: 0.95rem;
-      max-width: 650px;
+      max-width: 700px;
     }
 
     .filter-buttons {
@@ -467,7 +470,7 @@
     .filter-btn.active {
       color: var(--text);
       background: rgba(255,255,255,0.08);
-      border-color: rgba(197,165,106,0.18);
+      border-color: rgba(77,246,178,0.22);
     }
 
     .project-grid {
@@ -486,14 +489,17 @@
 
     .project-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(197,165,106,0.18);
+      border-color: rgba(77,246,178,0.18);
       box-shadow: var(--shadow);
     }
 
     .project-thumb {
       aspect-ratio: 16 / 10;
       overflow: hidden;
-      background: #202831;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(77,246,178,0.12), transparent 35%),
+        #151d27;
+      position: relative;
     }
 
     .project-thumb img {
@@ -501,6 +507,7 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.45s ease;
+      opacity: 0.92;
     }
 
     .project-card:hover .project-thumb img {
@@ -533,19 +540,19 @@
     .status-ongoing {
       color: var(--success-text);
       background: var(--success);
-      border-color: rgba(144, 181, 143, 0.24);
+      border-color: rgba(77,246,178,0.22);
     }
 
     .status-planned {
       color: var(--planned-text);
       background: var(--planned);
-      border-color: rgba(132, 158, 196, 0.24);
+      border-color: rgba(114,164,255,0.22);
     }
 
     .status-research {
       color: var(--research-text);
       background: var(--research);
-      border-color: rgba(199, 162, 97, 0.24);
+      border-color: rgba(255,191,92,0.20);
     }
 
     .project-body h3 {
@@ -584,13 +591,14 @@
       color: var(--text);
       font-size: 0.92rem;
       text-align: right;
+      max-width: 60%;
     }
 
     .project-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: #efdcb8;
+      color: #b5ffe3;
       font-weight: 600;
     }
 
@@ -608,30 +616,13 @@
       gap: 20px;
     }
 
-    .info-card {
-      padding: 30px;
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.04);
-    }
-
     .info-card .num {
       display: inline-block;
       margin-bottom: 14px;
-      color: #e5cfaa;
+      color: #b5ffe3;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       font-size: 0.78rem;
-    }
-
-    .info-card h3 {
-      font-size: 1.32rem;
-      margin-bottom: 12px;
-      letter-spacing: -0.03em;
-    }
-
-    .info-card p {
-      color: var(--muted);
     }
 
     .footer {
@@ -666,7 +657,7 @@
     .footer-col h4 {
       font-size: 1rem;
       margin-bottom: 14px;
-      color: #f1e8d8;
+      color: #d9fff0;
     }
 
     .footer-links {
@@ -792,6 +783,15 @@
       .hero-stats {
         padding-left: 0;
       }
+
+      .meta-item {
+        flex-direction: column;
+      }
+
+      .meta-item strong {
+        max-width: 100%;
+        text-align: left;
+      }
     }
   </style>
 </head>
@@ -800,24 +800,24 @@
     <div class="container">
       <nav class="nav" id="nav">
         <a href="index.html" class="brand">
-          <img src="logo.png" alt="Logo Core Chiper Labs" class="brand-logo" />
+          <img src="logo.png" alt="Core Chiper Labs logo" class="brand-logo" />
           <div class="brand-text">
             <strong>Core Chiper Labs</strong>
-            <span>Project, tools, dan Cyber Security</span>
+            <span>Web Security Research & Offensive Tooling</span>
           </div>
         </a>
 
         <div class="nav-links">
-          <a href="index.html">Beranda</a>
-          <a href="projects.html" class="active">Proyek</a>
+          <a href="index.html">Home</a>
+          <a href="projects.html" class="active">Projects</a>
           <a href="tools.html">Tools</a>
-          <a href="about.html">Tentang</a>
-          <a href="contact.html">Kontak</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </div>
 
         <div class="nav-actions">
           <a href="tools.html" class="btn btn-secondary">Explore Tools</a>
-          <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
         </div>
       </nav>
     </div>
@@ -831,11 +831,10 @@
             <div class="hero-main">
               <div class="hero-copy">
                 <div class="badge">Projects Directory</div>
-                <h1>Built from curiosity, shaped by experimentation, and focused on practical security.</h1>
+                <h1>Security projects built to test, automate, and validate real offensive workflows.</h1>
                 <p>
-                  Halaman ini berisi kumpulan proyek yang dikembangkan di Core Chiper Labs —
-                  mulai dari tools yang sudah selesai, sistem yang terus disempurnakan,
-                  sampai eksperimen yang lahir dari proses belajar, trial, and exploration.
+                  This page highlights selected projects from Core Chiper Labs, including secure systems, offensive utilities,
+                  and hands-on security experiments focused on web application testing, workflow automation, and controlled attack simulation.
                 </p>
 
                 <div class="hero-actions">
@@ -847,15 +846,15 @@
               <div class="hero-stats">
                 <div class="stat-card">
                   <strong>6 Projects</strong>
-                  <span>A curated collection of tools, systems, and security experiments published in this lab.</span>
+                  <span>Selected builds spanning offensive tooling, secure utilities, and lab-based security experiments.</span>
                 </div>
                 <div class="stat-card">
-                  <strong>Hands-on</strong>
-                  <span>Dibangun dengan pendekatan praktis, bukan hanya konsep, tapi real implementation.</span>
+                  <strong>Practical Scope</strong>
+                  <span>Designed around implementation, testing workflows, and reproducible technical outcomes.</span>
                 </div>
                 <div class="stat-card">
-                  <strong>Evolving</strong>
-                  <span>Beberapa proyek terus berkembang seiring ide baru, evaluasi teknis, dan eksplorasi lanjutan.</span>
+                  <strong>Continuously Refined</strong>
+                  <span>Projects evolve through iteration, deeper testing, and new research-driven improvements.</span>
                 </div>
               </div>
             </div>
@@ -863,25 +862,25 @@
             <aside class="hero-side">
               <div class="side-panel">
                 <small>Project Overview</small>
-                <h3>A clean structure for ideas, systems, and experiments</h3>
+                <h3>Focused work, not filler content</h3>
                 <p>
-                  Setiap project ditampilkan dengan ringkas namun tetap bermakna,
-                  agar pengunjung bisa memahami arah, fungsi, dan karakter teknisnya dalam sekali lihat.
+                  Each project is presented as a technical asset with a defined purpose, implementation stack,
+                  and security relevance so visitors can quickly understand what was built and why it matters.
                 </p>
 
                 <div class="mini-points">
-                  <span>Status proyek ditampilkan dengan lebih jelas</span>
-                  <span>Easy to expand into dedicated detail pages</span>
-                  <span>Visual language tetap selaras dengan identitas website</span>
+                  <span>Clear project status and technical direction</span>
+                  <span>Structured for detailed case-study pages later</span>
+                  <span>Consistent with a professional security portfolio</span>
                 </div>
               </div>
 
               <div class="side-panel">
-                <small>Notes</small>
-                <h3>Designed to grow without losing clarity</h3>
+                <small>Selection Logic</small>
+                <h3>Built to show depth and technical range</h3>
                 <p>
-                  Struktur halaman ini dibuat agar tetap nyaman dibaca meski jumlah proyek bertambah,
-                  sehingga konten bisa berkembang without making the interface feel crowded.
+                  The project list combines completed systems, planned builds, and research-stage concepts to show
+                  both current capability and the direction of ongoing cybersecurity work.
                 </p>
               </div>
             </aside>
@@ -890,15 +889,14 @@
 
         <div class="filter-bar reveal">
           <p>
-            Browse all projects or filter them by category to explore what is currently active,
-            what is being prepared, and what is still in the research phase.
+            Browse all projects or filter by status to review completed implementations, upcoming builds, and research-stage concepts across the lab.
           </p>
 
           <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Semua</button>
-            <button class="filter-btn" data-filter="ongoing">Aktif</button>
-            <button class="filter-btn" data-filter="planned">Rencana</button>
-            <button class="filter-btn" data-filter="research">Riset</button>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="ongoing">Completed</button>
+            <button class="filter-btn" data-filter="planned">Planned</button>
+            <button class="filter-btn" data-filter="research">Research</button>
           </div>
         </div>
       </div>
@@ -909,64 +907,63 @@
         <div class="section-head reveal">
           <div>
             <div class="badge">Selected Projects</div>
-            <h2>A closer look at the systems, tools, and ideas behind Core Chiper Labs.</h2>
+            <h2>A closer look at security-driven systems, utilities, and lab experiments.</h2>
           </div>
           <p>
-            Setiap proyek di bawah punya pendekatan yang berbeda,
-            tetapi semuanya lahir dari tujuan yang sama: building useful security-driven work with clarity and intent.
+            Each project below reflects a different part of the portfolio, from secure file handling to offensive workflow support and experimental research.
           </p>
         </div>
 
         <div class="project-grid" id="projectGrid">
           <article class="project-card reveal" data-category="ongoing">
             <div class="project-thumb">
-              <img src="project1.png" alt="Preview Lock File By CC" />
+              <img src="project1.png" alt="Preview of Lock File By CC project" />
             </div>
             <div class="project-body">
               <div class="project-badges">
                 <span class="project-tag status-ongoing">Completed</span>
-                <span class="project-tag">Security</span>
+                <span class="project-tag">Secure Utility</span>
               </div>
 
               <h3>Lock File By CC</h3>
               <p>
-                A Telegram-based utility for encrypting and decrypting files with a workflow that feels simple,
-                controlled, and secure. Dilengkapi sesi sementara, access control, dan auto cleanup untuk menjaga data tetap terlindungi.
+                A Telegram-based file encryption and decryption utility designed for controlled file handling,
+                short-lived sessions, and secure user interaction in lightweight workflows.
               </p>
 
               <div class="meta-list">
                 <div class="meta-item">
                   <span>Focus</span>
-                  <strong>File Encryption & Decryption</strong>
+                  <strong>Encrypted File Processing</strong>
                 </div>
                 <div class="meta-item">
                   <span>Stack</span>
                   <strong>Python, Telegram Bot API, Cryptography</strong>
                 </div>
                 <div class="meta-item">
-                  <span>Scope</span>
-                  <strong>Internal Lab Project</strong>
+                  <span>Impact</span>
+                  <strong>Combined encryption, access control, and cleanup into a streamlined secure workflow.</strong>
                 </div>
               </div>
 
-              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+              <a href="#" class="project-link">Detailed case study coming soon <span>→</span></a>
             </div>
           </article>
 
           <article class="project-card reveal" data-category="ongoing">
             <div class="project-thumb">
-              <img src="project2.png" alt="Preview Secure Vault By CC" />
+              <img src="project2.png" alt="Preview of Secure Vault By CC project" />
             </div>
             <div class="project-body">
               <div class="project-badges">
                 <span class="project-tag status-ongoing">Completed</span>
-                <span class="project-tag">Security</span>
+                <span class="project-tag">Secure Storage</span>
               </div>
 
               <h3>Secure Vault By CC</h3>
               <p>
-                A secure storage system built for uploading, managing, and retrieving files with per-file encryption
-                and user-based access control. Fokus utamanya adalah privasi, simplicity, and controlled access.
+                A secure storage system for uploading, managing, and retrieving files with per-file encryption,
+                access isolation, and privacy-focused handling for sensitive content.
               </p>
 
               <div class="meta-list">
@@ -979,30 +976,29 @@
                   <strong>Python, SQLite, Cryptography</strong>
                 </div>
                 <div class="meta-item">
-                  <span>Scope</span>
-                  <strong>Internal Lab Project</strong>
+                  <span>Impact</span>
+                  <strong>Demonstrated secure storage logic with controlled access and simplified file lifecycle management.</strong>
                 </div>
               </div>
 
-              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+              <a href="#" class="project-link">Detailed case study coming soon <span>→</span></a>
             </div>
           </article>
 
           <article class="project-card reveal" data-category="ongoing">
             <div class="project-thumb">
-              <img src="project3.png" alt="Preview Device Control By CC" />
+              <img src="project3.png" alt="Preview of Device Control By CC project" />
             </div>
             <div class="project-body">
               <div class="project-badges">
                 <span class="project-tag status-ongoing">Completed</span>
-                <span class="project-tag">Private Access</span>
+                <span class="project-tag">System Utility</span>
               </div>
 
               <h3>Device Control By CC</h3>
               <p>
-                Sistem untuk memantau kondisi perangkat, menjalankan fungsi diagnostik,
-                dan mengelola operasi dasar melalui akses yang terotorisasi.
-                Built with a practical mindset for control, monitoring, and safe interaction.
+                A system utility built for device status monitoring, diagnostic visibility, and authorized operational control
+                with a practical focus on safe remote interaction.
               </p>
 
               <div class="meta-list">
@@ -1015,30 +1011,29 @@
                   <strong>Python, psutil</strong>
                 </div>
                 <div class="meta-item">
-                  <span>Scope</span>
-                  <strong>Internal Lab Project</strong>
+                  <span>Impact</span>
+                  <strong>Centralized device diagnostics and operational checks into a controlled internal workflow.</strong>
                 </div>
               </div>
 
-              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+              <a href="#" class="project-link">Detailed case study coming soon <span>→</span></a>
             </div>
           </article>
 
           <article class="project-card reveal" data-category="planned">
             <div class="project-thumb">
-              <img src="project4.png" alt="Preview Steganografi" />
+              <img src="project4.png" alt="Preview of Steganography project" />
             </div>
             <div class="project-body">
               <div class="project-badges">
-                <span class="project-tag status-planned">Advanced</span>
-                <span class="project-tag">Privacy</span>
+                <span class="project-tag status-planned">Planned</span>
+                <span class="project-tag">Privacy Research</span>
               </div>
 
-              <h3>Steganografi</h3>
+              <h3>Steganography Engine</h3>
               <p>
-                Sebuah sistem untuk menyembunyikan dan mengekstrak pesan di dalam gambar
-                dengan pendekatan steganografi yang dipadukan dengan enkripsi.
-                The goal is not just hiding data, but protecting intent and confidentiality.
+                A planned system for embedding and extracting protected messages inside image files,
+                combining steganographic concealment with cryptographic protection for stronger confidentiality.
               </p>
 
               <div class="meta-list">
@@ -1051,30 +1046,29 @@
                   <strong>Python, PIL, NumPy, Cryptography</strong>
                 </div>
                 <div class="meta-item">
-                  <span>Scope</span>
-                  <strong>Internal Lab Project</strong>
+                  <span>Goal</span>
+                  <strong>Explore concealment methods that protect both the message and its visibility.</strong>
                 </div>
               </div>
 
-              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+              <a href="#" class="project-link">Detailed case study coming soon <span>→</span></a>
             </div>
           </article>
 
           <article class="project-card reveal" data-category="planned">
             <div class="project-thumb">
-              <img src="project5.png" alt="Preview Ephemeral Send" />
+              <img src="project5.png" alt="Preview of Ephemeral Send project" />
             </div>
             <div class="project-body">
               <div class="project-badges">
-                <span class="project-tag status-planned">Advanced</span>
-                <span class="project-tag">File Sharing</span>
+                <span class="project-tag status-planned">Planned</span>
+                <span class="project-tag">Secure Sharing</span>
               </div>
 
               <h3>Ephemeral Send</h3>
               <p>
-                A temporary file-sharing system designed for short-lived access,
-                automatic deletion, and one-time viewing scenarios.
-                Cocok untuk kebutuhan berbagi file yang lebih private, cepat, dan disposable.
+                A temporary file-sharing system designed for short-lived access, automatic deletion,
+                and reduced persistence to support private, time-bound file exchange scenarios.
               </p>
 
               <div class="meta-list">
@@ -1087,30 +1081,29 @@
                   <strong>Python, FastAPI, SQLite</strong>
                 </div>
                 <div class="meta-item">
-                  <span>Scope</span>
-                  <strong>Internal Lab Project</strong>
+                  <span>Goal</span>
+                  <strong>Create a disposable sharing workflow with strong emphasis on privacy and minimal exposure.</strong>
                 </div>
               </div>
 
-              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+              <a href="#" class="project-link">Detailed case study coming soon <span>→</span></a>
             </div>
           </article>
 
           <article class="project-card reveal" data-category="research">
             <div class="project-thumb">
-              <img src="project6.png" alt="Preview Crypto Force" />
+              <img src="project6.png" alt="Preview of Crypto Force project" />
             </div>
             <div class="project-body">
               <div class="project-badges">
                 <span class="project-tag status-research">Research</span>
-                <span class="project-tag">Experiment</span>
+                <span class="project-tag">Security Simulation</span>
               </div>
 
               <h3>Crypto Force</h3>
               <p>
-                Platform simulasi untuk mengevaluasi kekuatan password,
-                mengenali pola kelemahan, dan memberi insight yang lebih mudah dipahami.
-                More than a checker, this project explores how security feedback can feel more useful and human.
+                A password security simulation concept built to evaluate password strength, identify weakness patterns,
+                and deliver more useful feedback on insecure credential choices.
               </p>
 
               <div class="meta-list">
@@ -1123,12 +1116,12 @@
                   <strong>Python, Tkinter</strong>
                 </div>
                 <div class="meta-item">
-                  <span>Scope</span>
-                  <strong>Internal Lab Project</strong>
+                  <span>Research Direction</span>
+                  <strong>Improve how security feedback is delivered so it feels actionable, not generic.</strong>
                 </div>
               </div>
 
-              <a href="#" class="project-link">Detailed page coming soon <span>→</span></a>
+              <a href="#" class="project-link">Detailed case study coming soon <span>→</span></a>
             </div>
           </article>
         </div>
@@ -1139,49 +1132,44 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="badge">Why This Structure</div>
-            <h2>Simple on the surface, flexible underneath.</h2>
+            <div class="badge">Portfolio Structure</div>
+            <h2>Clean presentation on the surface, expandable underneath.</h2>
           </div>
           <p>
-            Halaman ini dirancang agar tetap terasa ringan dan jelas,
-            bahkan ketika jumlah proyek bertambah dan isi website berkembang lebih jauh.
+            This structure keeps the project page readable today while making it easy to grow into a deeper portfolio with dedicated technical write-ups.
           </p>
         </div>
 
         <div class="info-grid">
           <div class="info-card reveal">
             <span class="num">01 — Clear Status</span>
-            <h3>Status yang langsung terbaca</h3>
+            <h3>Project state is visible at a glance</h3>
             <p>
-              Pengunjung bisa langsung memahami posisi tiap proyek,
-              whether it is active, evolving, or still in the research stage.
+              Visitors can immediately distinguish between completed implementations, planned builds, and research-phase ideas without scanning large blocks of text.
             </p>
           </div>
 
           <div class="info-card reveal">
-            <span class="num">02 — Easy to Expand</span>
-            <h3>Mudah berkembang ke halaman yang lebih detail</h3>
+            <span class="num">02 — Case Study Ready</span>
+            <h3>Easy to expand into detailed project pages</h3>
             <p>
-              Saat dibutuhkan, setiap kartu bisa diarahkan ke dedicated project page
-              tanpa harus mengubah struktur besar halaman ini.
+              Each card is structured to later support a deeper page covering architecture, workflow, screenshots, findings, and lessons learned.
             </p>
           </div>
 
           <div class="info-card reveal">
-            <span class="num">03 — Consistent Style</span>
-            <h3>Tetap selaras dengan identitas website</h3>
+            <span class="num">03 — Technically Consistent</span>
+            <h3>Aligned with the portfolio’s security identity</h3>
             <p>
-              Secara visual, halaman ini menjaga tone yang sama dengan beranda:
-              clean, focused, and quietly technical.
+              The page keeps the same modern cyber aesthetic as the homepage while presenting the work with stronger professional clarity.
             </p>
           </div>
 
           <div class="info-card reveal">
             <span class="num">04 — Easy to Maintain</span>
-            <h3>Praktis untuk update konten ke depannya</h3>
+            <h3>Built for fast updates over time</h3>
             <p>
-              Menambah project baru, mengganti preview, atau memperbarui deskripsi
-              bisa dilakukan dengan cepat tanpa membuat layout terasa berantakan.
+              New projects, revised descriptions, and future previews can be added quickly without disrupting the overall layout or user flow.
             </p>
           </div>
         </div>
@@ -1194,25 +1182,24 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="brand">
-            <img src="logo.png" alt="Logo Core Chiper Labs" class="brand-logo" />
+            <img src="logo.png" alt="Core Chiper Labs logo" class="brand-logo" />
             <div class="brand-text">
               <strong>Core Chiper Labs</strong>
-              <span>Projects, tools, and cybersecurity exploration</span>
+              <span>Web Security Research & Offensive Tooling</span>
             </div>
           </div>
           <p>
-            Core Chiper Labs is a personal space for building, testing, and documenting security-focused ideas —
-            a place where curiosity meets implementation.
+            Core Chiper Labs is a personal cybersecurity portfolio for building, testing, and documenting security-focused systems, tools, and research-driven experiments.
           </p>
         </div>
 
         <div class="footer-col">
           <h4>Pages</h4>
           <div class="footer-links">
-            <a href="index.html">Beranda</a>
-            <a href="projects.html">Proyek</a>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
             <a href="tools.html">Tools</a>
-            <a href="about.html">Tentang</a>
+            <a href="about.html">About</a>
           </div>
         </div>
 
@@ -1229,7 +1216,7 @@
 
       <div class="footer-bottom">
         <span>© 2026 Core Chiper Labs. All rights reserved.</span>
-        <span>Built with curiosity, structure, and a security-first mindset.</span>
+        <span>Built for practical security work, technical clarity, and continuous improvement.</span>
       </div>
     </div>
   </footer>
