@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Core Chiper Labs</title>
   <meta
     name="description"
-    content="Learn more about Core Chiper Labs — a personal space for building projects, exploring tools, and documenting cybersecurity experiments with clarity and purpose."
+    content="Learn more about Core Chiper Labs, a personal cybersecurity portfolio focused on web application security, offensive tooling, practical labs, and technical research."
   />
 
   <style>
     :root {
-      --bg: #0f1318;
+      --bg: #0b0f14;
       --panel: rgba(255, 255, 255, 0.05);
       --panel-2: rgba(255, 255, 255, 0.04);
       --border: rgba(255, 255, 255, 0.08);
-      --text: #f2ede4;
-      --muted: #b7b0a3;
-      --muted-2: #8f8779;
-      --accent: #c5a56a;
-      --accent-soft: rgba(197, 165, 106, 0.12);
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      --text: #f5f7fa;
+      --muted: #aab3bf;
+      --muted-2: #7d8794;
+      --accent: #4df6b2;
+      --accent-soft: rgba(77, 246, 178, 0.10);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
       --container: 1180px;
       --transition: 0.35s ease;
     }
@@ -41,9 +41,9 @@
       line-height: 1.6;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at top left, rgba(197, 165, 106, 0.10), transparent 24%),
-        radial-gradient(circle at 90% 12%, rgba(197, 165, 106, 0.06), transparent 18%),
-        linear-gradient(180deg, #0f1318 0%, #151a20 45%, #101419 100%);
+        radial-gradient(circle at top left, rgba(77, 246, 178, 0.08), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(77, 246, 178, 0.05), transparent 18%),
+        linear-gradient(180deg, #0b0f14 0%, #101722 45%, #0b0f14 100%);
     }
 
     body::before {
@@ -93,8 +93,8 @@
       padding: 10px 16px;
       border-radius: 999px;
       background: var(--accent-soft);
-      border: 1px solid rgba(197, 165, 106, 0.18);
-      color: #e5cfaa;
+      border: 1px solid rgba(77, 246, 178, 0.18);
+      color: #b5ffe3;
       font-size: 0.78rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -107,7 +107,7 @@
       height: 8px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 16px rgba(197, 165, 106, 0.45);
+      box-shadow: 0 0 16px rgba(77, 246, 178, 0.45);
     }
 
     .section-head {
@@ -122,11 +122,11 @@
       font-size: clamp(2rem, 3vw, 3.2rem);
       line-height: 1.05;
       letter-spacing: -0.05em;
-      max-width: 760px;
+      max-width: 780px;
     }
 
     .section-head p {
-      max-width: 430px;
+      max-width: 450px;
       color: var(--muted);
     }
 
@@ -145,9 +145,9 @@
     }
 
     .btn-primary {
-      background: linear-gradient(180deg, #d4b37a, #b9945c);
-      color: #14181d;
-      box-shadow: 0 14px 30px rgba(197, 165, 106, 0.24);
+      background: linear-gradient(180deg, #72ffd0, #2fd4a1);
+      color: #07110d;
+      box-shadow: 0 14px 30px rgba(77, 246, 178, 0.22);
     }
 
     .btn-primary:hover {
@@ -170,7 +170,7 @@
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(18px);
-      background: rgba(15, 19, 24, 0.76);
+      background: rgba(11, 15, 20, 0.78);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
@@ -279,10 +279,10 @@
       right: -170px;
       top: -120px;
       border-radius: 50%;
-      border: 1px solid rgba(197,165,106,0.14);
+      border: 1px solid rgba(77,246,178,0.14);
       box-shadow:
-        0 0 0 42px rgba(197,165,106,0.04),
-        0 0 0 96px rgba(197,165,106,0.02);
+        0 0 0 42px rgba(77,246,178,0.04),
+        0 0 0 96px rgba(77,246,178,0.02);
       pointer-events: none;
     }
 
@@ -294,7 +294,7 @@
       width: 240px;
       height: 240px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(197,165,106,0.08), transparent 65%);
+      background: radial-gradient(circle, rgba(77,246,178,0.08), transparent 65%);
       pointer-events: none;
     }
 
@@ -316,7 +316,7 @@
     }
 
     .hero-copy {
-      max-width: 700px;
+      max-width: 720px;
       padding-left: 10px;
     }
 
@@ -331,7 +331,7 @@
     .hero-copy p {
       color: var(--muted);
       font-size: 1.05rem;
-      max-width: 620px;
+      max-width: 640px;
       margin-bottom: 28px;
     }
 
@@ -500,63 +500,10 @@
     .principle-card .num {
       display: inline-block;
       margin-bottom: 14px;
-      color: #e5cfaa;
+      color: #b5ffe3;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       font-size: 0.78rem;
-    }
-
-    .cta-box {
-      position: relative;
-      overflow: hidden;
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        linear-gradient(135deg, rgba(197,165,106,0.10), rgba(255,255,255,0.03)),
-        rgba(255,255,255,0.03);
-      box-shadow: var(--shadow);
-      padding: 34px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .cta-box::after {
-      content: "";
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      top: -70px;
-      right: -80px;
-      background: radial-gradient(circle, rgba(197,165,106,0.18), transparent 60%);
-      pointer-events: none;
-    }
-
-    .cta-copy {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-    }
-
-    .cta-copy h2 {
-      font-size: clamp(2rem, 3vw, 3rem);
-      line-height: 1.06;
-      letter-spacing: -0.04em;
-      margin-bottom: 14px;
-    }
-
-    .cta-copy p {
-      color: var(--muted);
-      max-width: 560px;
-    }
-
-    .cta-actions {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
     }
 
     .footer {
@@ -591,7 +538,7 @@
     .footer-col h4 {
       font-size: 1rem;
       margin-bottom: 14px;
-      color: #f1e8d8;
+      color: #d9fff0;
     }
 
     .footer-links {
@@ -669,11 +616,6 @@
       .hero-main {
         min-height: auto;
       }
-
-      .cta-box {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
 
     @media (max-width: 560px) {
@@ -689,8 +631,7 @@
         font-size: 2.45rem;
       }
 
-      .hero-actions,
-      .cta-actions {
+      .hero-actions {
         width: 100%;
       }
 
@@ -712,13 +653,20 @@
         height: 60px;
       }
 
-      .hero-shell,
-      .cta-box {
+      .hero-shell {
         padding: 18px;
       }
 
       .hero-copy {
         padding-left: 0;
+      }
+
+      .owner-item {
+        flex-direction: column;
+      }
+
+      .owner-item strong {
+        text-align: left;
       }
     }
   </style>
@@ -728,24 +676,24 @@
     <div class="container">
       <nav class="nav" id="nav">
         <a href="index.html" class="brand">
-          <img src="logo.png" alt="Logo Core Chiper Labs" class="brand-logo" />
+          <img src="logo.png" alt="Core Chiper Labs logo" class="brand-logo" />
           <div class="brand-text">
             <strong>Core Chiper Labs</strong>
-            <span>Project, tools, dan Cyber Security</span>
+            <span>Web Security Research & Offensive Tooling</span>
           </div>
         </a>
 
         <div class="nav-links">
-          <a href="index.html">Beranda</a>
-          <a href="projects.html">Proyek</a>
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
           <a href="tools.html">Tools</a>
-          <a href="about.html" class="active">Tentang</a>
-          <a href="contact.html">Kontak</a>
+          <a href="about.html" class="active">About</a>
+          <a href="contact.html">Contact</a>
         </div>
 
         <div class="nav-actions">
           <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
-          <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
         </div>
       </nav>
     </div>
@@ -759,11 +707,11 @@
             <div class="hero-main">
               <div class="hero-copy">
                 <div class="badge">About Core Chiper Labs</div>
-                <h1>Built from curiosity, shaped by learning, and driven by a genuine interest in cybersecurity.</h1>
+                <h1>A focused cybersecurity lab built around web security, practical tooling, and continuous technical growth.</h1>
                 <p>
-                  Core Chiper Labs adalah ruang personal tempat project, tools, dan eksperimen teknis
-                  dikembangkan dengan pendekatan yang rapi, terarah, dan tetap eksploratif.
-                  Bukan sekadar koleksi hasil, tetapi juga tempat untuk belajar, membangun, dan terus berkembang (Hobby).
+                  Core Chiper Labs is a personal cybersecurity portfolio created to document offensive security projects,
+                  custom-built tools, and hands-on research. It is designed to present technical work clearly, professionally,
+                  and with enough depth to reflect real specialization rather than casual experimentation.
                 </p>
 
                 <div class="hero-actions">
@@ -776,46 +724,46 @@
             <aside class="hero-side">
               <div class="owner-card">
                 <div class="owner-top">
-                  <img src="owner.png" alt="Foto pemilik Core Chiper Labs" class="owner-photo" />
+                  <img src="owner.png" alt="Profile photo of the owner of Core Chiper Labs" class="owner-photo" />
                   <div class="owner-meta">
-                    <small>Owner</small>
+                    <small>Owner Profile</small>
                     <h3>Dhafir</h3>
-                    <p>Builder, explorer, and the mind behind Core Chiper Labs</p>
+                    <p>Cybersecurity builder focused on web application security, offensive tooling, and technical lab work.</p>
                   </div>
                 </div>
 
                 <div class="owner-list">
                   <div class="owner-item">
                     <span>Role</span>
-                    <strong>Owner & Builder</strong>
+                    <strong>Independent Security Builder</strong>
                   </div>
                   <div class="owner-item">
-                    <span>Main Focus</span>
-                    <strong>Cybersecurity Projects (Hobby)</strong>
+                    <span>Primary Focus</span>
+                    <strong>Web Security & Pentest-Oriented Projects</strong>
                   </div>
                   <div class="owner-item">
-                    <span>Scope</span>
-                    <strong>Tools, Experiments & Ongoing Learning (Hobby)</strong>
+                    <span>Core Work</span>
+                    <strong>Projects, Tools, Labs & Security Research</strong>
                   </div>
                   <div class="owner-item">
                     <span>Approach</span>
-                    <strong>Clean, practical, and detail-oriented</strong>
+                    <strong>Technical, structured, and detail-driven</strong>
                   </div>
                 </div>
               </div>
 
               <div class="side-panel">
-                <small>Identity Notes</small>
-                <h3>More than a hobby space</h3>
+                <small>Lab Identity</small>
+                <h3>More than a personal website</h3>
                 <p>
-                  Core Chiper Labs lahir dari rasa ingin tahu yang serius —
-                  sebuah personal lab untuk merangkum proses, ide, dan hasil kerja dengan identitas yang lebih jelas.
+                  Core Chiper Labs exists to give technical work a clear structure: a place to present projects,
+                  document tooling, and show practical security direction with a stronger professional identity.
                 </p>
 
                 <div class="mini-points">
-                  <span>Memperkenalkan sosok di balik lab ini</span>
-                  <span>Menjelaskan arah dan karakter pengembangan</span>
-                  <span>Menguatkan identitas website secara lebih personal</span>
+                  <span>Clarifies the specialization behind the portfolio</span>
+                  <span>Shows the person and thinking behind the work</span>
+                  <span>Reinforces credibility through structure and focus</span>
                 </div>
               </div>
             </aside>
@@ -829,45 +777,44 @@
         <div class="section-head reveal">
           <div>
             <div class="badge">Identity</div>
-            <h2>A personal workspace for building, documenting, and refining technical ideas with more clarity.</h2>
+            <h2>A personal security workspace built to turn technical exploration into a credible portfolio.</h2>
           </div>
           <p>
-            Halaman ini menjelaskan apa itu Core Chiper Labs, siapa yang membangunnya,
-            dan kenapa ruang ini dibuat dengan pendekatan yang lebih terstruktur.
+            This page explains what Core Chiper Labs is, who is behind it, and how the lab is shaped by practical security work and deliberate technical development.
           </p>
         </div>
 
         <div class="content-grid">
           <div class="content-card reveal">
-            <h3>About this lab</h3>
+            <h3>What this lab is for</h3>
             <p>
-              Core Chiper Labs adalah personal workspace yang berfokus pada cybersecurity projects,
-              utilities, dan technical experiments yang dibangun sebagai bagian dari proses belajar dan eksplorasi.
+              Core Chiper Labs is a structured space for documenting cybersecurity projects, offensive utilities,
+              and hands-on technical experiments with a stronger level of clarity than a typical personal site.
             </p>
             <p>
-              Tujuannya bukan hanya untuk menampilkan apa yang sudah dibuat,
-              tetapi juga untuk menyusun perjalanan teknis itu sendiri agar lebih mudah dibaca, dipahami, dan dikembangkan.
+              It exists not only to showcase finished work, but also to organize the process behind that work:
+              building tools, validating ideas, exploring attack paths, and refining technical direction over time.
             </p>
             <p>
-              Di sinilah project dirapikan, tools dikumpulkan, ide dicoba, dan perkembangan kecil maupun besar
-              diberi tempat yang layak dalam satu ekosistem yang konsisten, semua dilakukan berdasarkan Hobby.
+              Rather than acting as a casual archive, the lab is positioned as a focused portfolio for security-related work,
+              especially in areas tied to web application security, testing workflows, and practical automation.
             </p>
           </div>
 
           <div class="content-card reveal">
-            <h3>Main focus</h3>
+            <h3>Main focus areas</h3>
             <div class="focus-list">
               <div class="focus-item">
-                <strong>Cybersecurity Projects</strong>
-                <span>Kumpulan project yang dibangun untuk menguji ide, menyelesaikan kebutuhan praktis, atau sekadar mengeksplorasi pendekatan baru.</span>
+                <strong>Web Application Security</strong>
+                <span>Focused on offensive testing concepts such as authentication flaws, access control issues, insecure input handling, and exploit simulation.</span>
               </div>
               <div class="focus-item">
-                <strong>Tools & Utilities</strong>
-                <span>Tempat untuk script, automation, helper tools, dan utility kecil yang mendukung workflow teknis secara langsung.</span>
+                <strong>Tools & Offensive Utilities</strong>
+                <span>Custom scripts, small systems, and workflow-oriented utilities built to support security testing and practical technical tasks.</span>
               </div>
               <div class="focus-item">
-                <strong>Research Direction</strong>
-                <span>Ruang untuk pemikiran jangka panjang, eksperimen lanjutan, dan dokumentasi arah belajar yang terus berkembang.</span>
+                <strong>Labs & Research Direction</strong>
+                <span>Hands-on experimentation, vulnerability simulation, and continuous skill development through practical security work.</span>
               </div>
             </div>
           </div>
@@ -883,45 +830,40 @@
             <h2>The person behind the lab and the principles that shape its direction.</h2>
           </div>
           <p>
-            Bagian ini memberi sentuhan personal yang cukup,
-            tanpa menghilangkan nuansa teknis dan clean yang menjadi ciri utama website ini.
+            This section adds the human context behind the portfolio while keeping the tone technical, disciplined, and relevant to cybersecurity work.
           </p>
         </div>
 
         <div class="principles-grid">
           <div class="principle-card reveal">
             <span class="num">01 — Ownership</span>
-            <h3>Built and managed by Dhafir</h3>
+            <h3>Built and maintained by Dhafir</h3>
             <p>
-              Core Chiper Labs dikembangkan sebagai ruang personal oleh Dhafir untuk menampung,
-              merapikan, dan mengembangkan berbagai inisiatif yang berkaitan dengan cybersecurity dan eksplorasi teknis.
+              Core Chiper Labs is independently developed and curated by Dhafir as a dedicated space for presenting cybersecurity work with stronger focus and structure.
             </p>
           </div>
 
           <div class="principle-card reveal">
             <span class="num">02 — Direction</span>
-            <h3>Driven by curiosity, not just output</h3>
+            <h3>Driven by practical curiosity</h3>
             <p>
-              Website ini tidak dibuat semata untuk memamerkan hasil akhir,
-              tetapi juga untuk merekam proses belajar, eksperimen, dan pertumbuhan teknis yang terjadi di belakangnya.
+              The lab is shaped by hands-on exploration, not abstract interest alone. Projects and tools are built to test ideas, solve technical problems, and strengthen applied security skills.
             </p>
           </div>
 
           <div class="principle-card reveal">
             <span class="num">03 — Presentation</span>
-            <h3>Minimal, structured, and quietly technical</h3>
+            <h3>Minimal, structured, and technically clear</h3>
             <p>
-              Pendekatan visualnya dibuat bersih dan terkontrol agar informasi terasa jelas,
-              fokus, dan tetap mencerminkan karakter teknis tanpa berlebihan.
+              The visual and written approach is intentionally controlled so the work feels credible, focused, and easy to evaluate for recruiters, engineers, and security professionals.
             </p>
           </div>
 
           <div class="principle-card reveal">
             <span class="num">04 — Purpose</span>
-            <h3>A space for projects, tools, and continuous exploration</h3>
+            <h3>A portfolio for real technical progression</h3>
             <p>
-              Core Chiper Labs berfungsi sebagai tempat untuk mengumpulkan karya, menguji ide,
-              dan memberi arah pada berbagai eksperimen yang mungkin terus berkembang seiring waktu.
+              Core Chiper Labs is meant to grow with the work itself—capturing projects, tools, and research that reflect continuous development in cybersecurity.
             </p>
           </div>
         </div>
@@ -933,25 +875,24 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="brand">
-            <img src="logo.png" alt="Logo Core Chiper Labs" class="brand-logo" />
+            <img src="logo.png" alt="Core Chiper Labs logo" class="brand-logo" />
             <div class="brand-text">
               <strong>Core Chiper Labs</strong>
-              <span>Projects, tools, and cybersecurity exploration</span>
+              <span>Web Security Research & Offensive Tooling</span>
             </div>
           </div>
           <p>
-            Core Chiper Labs is a personal space for building, refining, and documenting technical work —
-            a place where curiosity meets structure, and ideas are given room to grow.
+            Core Chiper Labs is a personal cybersecurity portfolio for documenting projects, refining tools, and presenting practical security work with clarity and technical focus.
           </p>
         </div>
 
         <div class="footer-col">
           <h4>Pages</h4>
           <div class="footer-links">
-            <a href="index.html">Beranda</a>
-            <a href="projects.html">Proyek</a>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
             <a href="tools.html">Tools</a>
-            <a href="about.html">Tentang</a>
+            <a href="about.html">About</a>
           </div>
         </div>
 
@@ -968,7 +909,7 @@
 
       <div class="footer-bottom">
         <span>© 2026 Core Chiper Labs. All rights reserved.</span>
-        <span>A personal lab shaped by curiosity, structure, and continuous exploration.</span>
+        <span>Built around practical security work, technical structure, and continuous learning.</span>
       </div>
     </div>
   </footer>
