@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools | Core Cipher Labs</title>
+  <meta
+    name="description"
+    content="Explore the tools behind Core Cipher Labs — a collection of utilities, scripts, and security-focused workflows built for practical use and continuous experimentation."
+  />
+
+  <style>
+    :root {
+      --bg: #0f1318;
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-2: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f2ede4;
+      --muted: #b7b0a3;
+      --muted-2: #8f8779;
+      --accent: #c5a56a;
+      --accent-soft: rgba(197, 165, 106, 0.12);
+      --ready: rgba(144, 181, 143, 0.16);
+      --ready-text: #d8e8d2;
+      --build: rgba(199, 162, 97, 0.16);
+      --build-text: #f1dfc1;
+      --concept: rgba(132, 158, 196, 0.16);
+      --concept-text: #d8e4f4;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      --container: 1180px;
+      --transition: 0.35s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(197, 165, 106, 0.10), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(197, 165, 106, 0.06), transparent 18%),
+        linear-gradient(180deg, #0f1318 0%, #151a20 45%, #101419 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 88%);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(197, 165, 106, 0.18);
+      color: #e5cfaa;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(197, 165, 106, 0.45);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 3vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+    }
+
+    .section-head p {
+      max-width: 430px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 16px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #d4b37a, #b9945c);
+      color: #14181d;
+      box-shadow: 0 14px 30px rgba(197, 165, 106, 0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.07);
+      transform: translateY(-2px);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(15, 19, 24, 0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      object-fit: cover;
+      padding: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 2px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-links a {
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      font-size: 1.1rem;
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      right: -170px;
+      top: -120px;
+      border-radius: 50%;
+      border: 1px solid rgba(197,165,106,0.14);
+      box-shadow:
+        0 0 0 42px rgba(197,165,106,0.04),
+        0 0 0 96px rgba(197,165,106,0.02);
+      pointer-events: none;
+    }
+
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197,165,106,0.08), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-main {
+      padding: 18px 8px 10px 8px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      padding-left: 10px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+      margin-bottom: 18px;
+      max-width: 760px;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding-left: 10px;
+    }
+
+    .stat-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+      color: #f6ecda;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .side-panel {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .side-panel small {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted-2);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+    }
+
+    .side-panel h3 {
+      font-size: 1.24rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .side-panel p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .mini-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .mini-points span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .mini-points span::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .filter-bar {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.035);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px 28px;
+    }
+
+    .filter-bar p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 650px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-btn {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(197,165,106,0.18);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .tool-card {
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+      transition: var(--transition);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(197,165,106,0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .tool-thumb {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #202831;
+    }
+
+    .tool-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .tool-card:hover .tool-thumb img {
+      transform: scale(1.04);
+    }
+
+    .tool-body {
+      padding: 22px;
+    }
+
+    .tool-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tool-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+    }
+
+    .status-ready {
+      color: var(--ready-text);
+      background: var(--ready);
+      border-color: rgba(144, 181, 143, 0.24);
+    }
+
+    .status-build {
+      color: var(--build-text);
+      background: var(--build);
+      border-color: rgba(199, 162, 97, 0.24);
+    }
+
+    .status-concept {
+      color: var(--concept-text);
+      background: var(--concept);
+      border-color: rgba(132, 158, 196, 0.24);
+    }
+
+    .tool-body h3 {
+      font-size: 1.16rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .tool-body p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 16px;
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .meta-item span {
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .meta-item strong {
+      color: var(--text);
+      font-size: 0.92rem;
+      text-align: right;
+    }
+
+    .tool-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #efdcb8;
+      font-weight: 600;
+    }
+
+    .tool-link span {
+      transition: transform var(--transition);
+    }
+
+    .tool-card:hover .tool-link span {
+      transform: translateX(4px);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .info-card {
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .info-card .num {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #e5cfaa;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.32rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .info-card p {
+      color: var(--muted);
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(135deg, rgba(197,165,106,0.10), rgba(255,255,255,0.03)),
+        rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      top: -70px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(197,165,106,0.18), transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .cta-copy h2 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .cta-copy p {
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .cta-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer {
+      margin-top: 88px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 24px;
+      padding: 42px 0;
+    }
+
+    .footer-brand p,
+    .footer-col a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-brand p {
+      max-width: 420px;
+      margin-top: 14px;
+    }
+
+    .footer .brand-logo {
+      width: 68px;
+      height: 68px;
+    }
+
+    .footer-col h4 {
+      font-size: 1rem;
+      margin-bottom: 14px;
+      color: #f1e8d8;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-bottom {
+      padding: 18px 0 28px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .tool-grid,
+      .info-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links,
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav.open .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        border-radius: 20px;
+        background: rgba(18, 23, 29, 0.98);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-grid,
+      .tool-grid,
+      .info-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main {
+        min-height: auto;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--container), calc(100% - 20px));
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.45rem;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .info-card {
+        padding: 24px;
+      }
+
+      .brand-logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .hero-shell,
+      .cta-box {
+        padding: 18px;
+      }
+
+      .hero-copy,
+      .hero-stats {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" id="nav">
+        <a href="index.html" class="brand">
+          <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+          <div class="brand-text">
+            <strong>Core Cipher Labs</strong>
+            <span>Projects, tools, and cybersecurity exploration</span>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html">Beranda</a>
+          <a href="projects.html">Proyek</a>
+          <a href="tools.html" class="active">Tools</a>
+          <a href="about.html">Tentang</a>
+          <a href="contact.html">Kontak</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="projects.html" class="btn btn-secondary">View Projects</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell reveal">
+          <div class="hero-grid">
+            <div class="hero-main">
+              <div class="hero-copy">
+                <div class="badge">Tools Directory</div>
+                <h1>Useful utilities, focused scripts, and small systems built to make technical work feel sharper.</h1>
+                <p>
+                  Halaman ini merangkum tools yang dikembangkan di Core Cipher Labs —
+                  mulai dari utility yang sudah siap dipakai, tools yang masih berkembang,
+                  hingga konsep yang sedang disusun untuk workflow berikutnya.
+                </p>
+
+                <div class="hero-actions">
+                  <a href="projects.html" class="btn btn-primary">View Projects</a>
+                  <a href="about.html" class="btn btn-secondary">About The Lab</a>
+                </div>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat-card">
+                  <strong>4 Ready</strong>
+                  <span>Tools yang sudah cukup matang untuk digunakan dan ditampilkan sebagai bagian dari lab.</span>
+                </div>
+                <div class="stat-card">
+                  <strong>1 In Build</strong>
+                  <span>Masih dalam proses penyempurnaan, baik dari sisi fitur, alur kerja, maupun implementasi teknis.</span>
+                </div>
+                <div class="stat-card">
+                  <strong>1 Concept</strong>
+                  <span>Masih berada di tahap awal, tetapi sudah punya arah, fungsi, dan kemungkinan pengembangan yang jelas.</span>
+                </div>
+              </div>
+            </div>
+
+            <aside class="hero-side">
+              <div class="side-panel">
+                <small>Tools Overview</small>
+                <h3>A structured way to present practical tools</h3>
+                <p>
+                  Setiap tool dirangkum secara singkat namun tetap informatif,
+                  supaya fungsi, kategori, dan karakter teknisnya bisa dipahami tanpa terasa berlebihan.
+                </p>
+
+                <div class="mini-points">
+                  <span>Status tool ditampilkan dengan jelas dan mudah dipindai</span>
+                  <span>Easy to expand into separate detail pages</span>
+                  <span>Tetap konsisten dengan visual language website</span>
+                </div>
+              </div>
+
+              <div class="side-panel">
+                <small>Notes</small>
+                <h3>Designed to scale without looking crowded</h3>
+                <p>
+                  Semakin banyak tools yang ditambahkan, struktur halaman ini tetap nyaman dibaca
+                  berkat sistem grid, filter kategori, dan susunan informasi yang tetap terjaga.
+                </p>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <div class="filter-bar reveal">
+          <p>
+            Browse all tools or filter them by stage to see what is already usable,
+            what is still being refined, and what is currently just an idea in progress.
+          </p>
+
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="ready">Ready</button>
+            <button class="filter-btn" data-filter="build">In Build</button>
+            <button class="filter-btn" data-filter="concept">Concept</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Selected Tools</div>
+            <h2>A collection of utilities and small systems that support the lab’s workflow.</h2>
+          </div>
+          <p>
+            Tool-tool di bawah dibangun dengan pendekatan yang sederhana, praktis,
+            dan tetap fokus pada fungsi yang benar-benar berguna.
+          </p>
+        </div>
+
+        <div class="tool-grid" id="toolGrid">
+          <article class="tool-card reveal" data-category="ready">
+            <div class="tool-thumb">
+              <img src="tool1.png" alt="Preview Cipher Solver" />
+            </div>
+            <div class="tool-body">
+              <div class="tool-badges">
+                <span class="tool-tag status-ready">Ready</span>
+                <span class="tool-tag">Math</span>
+              </div>
+
+              <h3>Cipher Solver</h3>
+              <p>
+                Utility berbasis Python untuk kalkulasi matematis, konversi satuan,
+                transformasi angka, dan pemrosesan cipher sederhana dalam satu alur terminal yang ringkas.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Language</span>
+                  <strong>Python</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Use Case</span>
+                  <strong>Calculation, Conversion & Cipher Utility</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Output</span>
+                  <strong>TXT / Terminal Output</strong>
+                </div>
+              </div>
+
+              <a href="#" class="tool-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="tool-card reveal" data-category="ready">
+            <div class="tool-thumb">
+              <img src="tool2.png" alt="Preview Downloader Bot" />
+            </div>
+            <div class="tool-body">
+              <div class="tool-badges">
+                <span class="tool-tag status-ready">Ready</span>
+                <span class="tool-tag">Utility</span>
+              </div>
+
+              <h3>Downloader Bot</h3>
+              <p>
+                Tool berbasis Python untuk mengambil, mengelola, dan mengirim file dari URL
+                atau platform media yang didukung melalui satu workflow yang lebih terpusat dan efisien.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Language</span>
+                  <strong>Python</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Use Case</span>
+                  <strong>File Download & Media Retrieval</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Output</span>
+                  <strong>File / Media / Terminal Logs</strong>
+                </div>
+              </div>
+
+              <a href="#" class="tool-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="tool-card reveal" data-category="ready">
+            <div class="tool-thumb">
+              <img src="tool3.png" alt="Preview Cipher Create Secure" />
+            </div>
+            <div class="tool-body">
+              <div class="tool-badges">
+                <span class="tool-tag status-ready">Ready</span>
+                <span class="tool-tag">Security</span>
+              </div>
+
+              <h3>Cipher Create Secure</h3>
+              <p>
+                Tool untuk membuat, mengevaluasi, dan menyimpan password secara lebih aman,
+                dilengkapi generator kustom, analisis kekuatan, dan penyimpanan terenkripsi.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Language</span>
+                  <strong>Python</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Use Case</span>
+                  <strong>Password Generation & Secure Vault</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Output</span>
+                  <strong>TXT / JSON</strong>
+                </div>
+              </div>
+
+              <a href="#" class="tool-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="tool-card reveal" data-category="ready">
+            <div class="tool-thumb">
+              <img src="tool4.png" alt="Preview Core Cipher Bot" />
+            </div>
+            <div class="tool-body">
+              <div class="tool-badges">
+                <span class="tool-tag status-ready">Ready</span>
+                <span class="tool-tag">Encryption</span>
+              </div>
+
+              <h3>Core Cipher Bot</h3>
+              <p>
+                Tool untuk mengenkripsi dan mendekripsi teks berbasis password,
+                lengkap dengan metadata proses, riwayat aktivitas, dan antarmuka interaktif yang lebih nyaman digunakan.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Language</span>
+                  <strong>Python, Shell</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Use Case</span>
+                  <strong>Text Encryption & Decryption</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Output</span>
+                  <strong>TXT / JSON</strong>
+                </div>
+              </div>
+
+              <a href="#" class="tool-link">Detailed page coming soon <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="tool-card reveal" data-category="build">
+            <div class="tool-thumb">
+              <img src="tool5.png" alt="Preview upcoming dashboard tool" />
+            </div>
+            <div class="tool-body">
+              <div class="tool-badges">
+                <span class="tool-tag status-build">In Build</span>
+                <span class="tool-tag">Dashboard</span>
+              </div>
+
+              <h3>Next Utility in Progress</h3>
+              <p>
+                Sebuah tool baru sedang disiapkan untuk memperluas workflow di Core Cipher Labs.
+                Detail lengkapnya belum dirilis, tetapi arahnya berfokus pada efisiensi, visibilitas, dan kontrol yang lebih baik.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Status</span>
+                  <strong>Under Development</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Use Case</span>
+                  <strong>Workflow Expansion</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Mode</span>
+                  <strong>Private Build</strong>
+                </div>
+              </div>
+
+              <a href="#" class="tool-link">More details will be added later <span>→</span></a>
+            </div>
+          </article>
+
+          <article class="tool-card reveal" data-category="concept">
+            <div class="tool-thumb">
+              <img src="tool5.png" alt="Preview future analysis tool" />
+            </div>
+            <div class="tool-body">
+              <div class="tool-badges">
+                <span class="tool-tag status-concept">Concept</span>
+                <span class="tool-tag">Analysis</span>
+              </div>
+
+              <h3>Future Tool Concept</h3>
+              <p>
+                Masih berupa gagasan awal, tool ini dirancang sebagai kemungkinan pengembangan berikutnya
+                untuk mendukung analisis, otomasi, atau kebutuhan teknis lain di masa depan.
+              </p>
+
+              <div class="meta-list">
+                <div class="meta-item">
+                  <span>Status</span>
+                  <strong>Early Concept</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Use Case</span>
+                  <strong>Analysis & Automation</strong>
+                </div>
+                <div class="meta-item">
+                  <span>Mode</span>
+                  <strong>Planned Direction</strong>
+                </div>
+              </div>
+
+              <a href="#" class="tool-link">This concept will evolve over time <span>→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="badge">Structure Notes</div>
+            <h2>Simple enough to stay clean, flexible enough to keep growing.</h2>
+          </div>
+          <p>
+            Struktur halaman ini dibuat supaya tetap rapi dan enak dijelajahi,
+            bahkan saat jumlah utility dan tools terus bertambah.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card reveal">
+            <span class="num">01 — Clear Categories</span>
+            <h3>Kategori yang mudah dipahami</h3>
+            <p>
+              Pengunjung bisa langsung membedakan mana tool yang sudah siap dipakai,
+              mana yang masih dalam tahap pengembangan, dan mana yang baru berupa konsep.
+            </p>
+          </div>
+
+          <div class="info-card reveal">
+            <span class="num">02 — Easy Expansion</span>
+            <h3>Mudah dikembangkan ke halaman detail</h3>
+            <p>
+              Setiap kartu dapat diarahkan ke halaman khusus saat nanti dibutuhkan penjelasan yang lebih dalam,
+              tanpa harus mengubah struktur utama halaman ini.
+            </p>
+          </div>
+
+          <div class="info-card reveal">
+            <span class="num">03 — Consistent Visual System</span>
+            <h3>Visual tetap selaras dengan website</h3>
+            <p>
+              Desainnya menjaga tone yang sama dengan halaman lain:
+              focused, clean, and quietly technical.
+            </p>
+          </div>
+
+          <div class="info-card reveal">
+            <span class="num">04 — Asset Friendly</span>
+            <h3>Praktis untuk update konten</h3>
+            <p>
+              Menambah preview, memperbarui deskripsi, atau memasukkan tool baru
+              bisa dilakukan tanpa membuat layout terasa berat atau berantakan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">
+            <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+            <div class="brand-text">
+              <strong>Core Cipher Labs</strong>
+              <span>Projects, tools, and cybersecurity exploration</span>
+            </div>
+          </div>
+          <p>
+            Core Cipher Labs is a personal space for building, testing, and refining practical tools,
+            technical ideas, and security-focused experiments with a clear and structured approach.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <div class="footer-links">
+            <a href="index.html">Beranda</a>
+            <a href="projects.html">Proyek</a>
+            <a href="tools.html">Tools</a>
+            <a href="about.html">Tentang</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="contact.html">Contact Page</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Core Cipher Labs. All rights reserved.</span>
+        <span>Built for practical use, continuous refinement, and security-minded experimentation.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("nav");
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("open");
+      });
+    }
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    reveals.forEach((item) => observer.observe(item));
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const toolCards = document.querySelectorAll(".tool-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.getAttribute("data-filter");
+
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        toolCards.forEach((card) => {
+          const category = card.getAttribute("data-category");
+
+          if (filter === "all" || category === filter) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
