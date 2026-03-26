@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Core Cipher Labs</title>
+  <title>Contact | Core Chiper Labs</title>
   <meta
     name="description"
-    content="Halaman kontak Core Cipher Labs untuk terhubung melalui GitHub."
+    content="Contact Core Chiper Labs through selected platforms and stay connected with projects, tools, and ongoing technical exploration."
   />
 
   <style>
@@ -450,53 +450,86 @@
       margin-bottom: 14px;
     }
 
-    .github-panel {
+    .platform-grid {
+      display: grid;
+      gap: 14px;
       margin-top: 18px;
-      padding: 20px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
     }
 
-    .github-top {
+    .platform-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      transition: var(--transition);
+    }
+
+    .platform-item:hover {
+      border-color: rgba(197,165,106,0.18);
+      transform: translateY(-2px);
+    }
+
+    .platform-left {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 16px;
+      min-width: 0;
     }
 
-    .github-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 18px;
+    .platform-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
       border: 1px solid rgba(255,255,255,0.08);
       background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.35rem;
+      font-size: 1.05rem;
       box-shadow: var(--shadow);
+      flex-shrink: 0;
     }
 
-    .github-meta small {
+    .platform-meta small {
       display: block;
       color: var(--muted-2);
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      font-size: 0.72rem;
+      font-size: 0.70rem;
       margin-bottom: 4px;
     }
 
-    .github-meta h4 {
-      font-size: 1.1rem;
+    .platform-meta h4 {
+      font-size: 1rem;
       margin-bottom: 4px;
       letter-spacing: -0.02em;
     }
 
-    .github-meta p {
+    .platform-meta p {
       color: var(--muted);
       margin: 0;
-      font-size: 0.94rem;
+      font-size: 0.92rem;
+    }
+
+    .platform-status {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .platform-status span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
     }
 
     .info-list {
@@ -520,59 +553,6 @@
     .info-item span {
       color: var(--muted);
       font-size: 0.93rem;
-    }
-
-    .cta-box {
-      position: relative;
-      overflow: hidden;
-      border-radius: 34px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        linear-gradient(135deg, rgba(197,165,106,0.10), rgba(255,255,255,0.03)),
-        rgba(255,255,255,0.03);
-      box-shadow: var(--shadow);
-      padding: 34px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .cta-box::after {
-      content: "";
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      top: -70px;
-      right: -80px;
-      background: radial-gradient(circle, rgba(197,165,106,0.18), transparent 60%);
-      pointer-events: none;
-    }
-
-    .cta-copy {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-    }
-
-    .cta-copy h2 {
-      font-size: clamp(2rem, 3vw, 3rem);
-      line-height: 1.06;
-      letter-spacing: -0.04em;
-      margin-bottom: 14px;
-    }
-
-    .cta-copy p {
-      color: var(--muted);
-      max-width: 560px;
-    }
-
-    .cta-actions {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
     }
 
     .footer {
@@ -683,11 +663,6 @@
       .hero-main {
         min-height: auto;
       }
-
-      .cta-box {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
 
     @media (max-width: 560px) {
@@ -703,8 +678,7 @@
         font-size: 2.45rem;
       }
 
-      .hero-actions,
-      .cta-actions {
+      .hero-actions {
         width: 100%;
       }
 
@@ -717,8 +691,13 @@
         padding: 24px;
       }
 
-      .github-top {
+      .platform-item {
+        flex-direction: column;
         align-items: flex-start;
+      }
+
+      .platform-status {
+        text-align: left;
       }
 
       .brand-logo {
@@ -726,8 +705,7 @@
         height: 60px;
       }
 
-      .hero-shell,
-      .cta-box {
+      .hero-shell {
         padding: 18px;
       }
 
@@ -742,9 +720,9 @@
     <div class="container">
       <nav class="nav" id="nav">
         <a href="index.html" class="brand">
-          <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+          <img src="logo.png" alt="Logo Core Chiper Labs" class="brand-logo" />
           <div class="brand-text">
-            <strong>Core Cipher Labs</strong>
+            <strong>Core Chiper Labs</strong>
             <span>Project, tools, dan Cyber Security</span>
           </div>
         </a>
@@ -758,7 +736,7 @@
         </div>
 
         <div class="nav-actions">
-          <a href="about.html" class="btn btn-secondary">Tentang</a>
+          <a href="about.html" class="btn btn-secondary">About</a>
           <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
         </div>
       </nav>
@@ -773,24 +751,25 @@
             <div class="hero-main">
               <div class="hero-copy">
                 <div class="badge">Contact</div>
-                <h1>Terhubung secara sederhana dan terstruktur.</h1>
+                <h1>Stay connected through selected platforms, kept simple and intentional.</h1>
                 <p>
-                  Halaman kontak ini dirancang tetap fokus dan elegan. Sebagai proyek berbasis hobby, Core Cipher Labs menggunakan satu titik kontak utama untuk menampilkan proyek, tools, serta perkembangan teknis secara terpusat.
+                  Halaman ini menjadi titik kontak untuk Core Chiper Labs.
+                  Beberapa platform sudah disiapkan sebagai jalur koneksi, meskipun sebagian detail akun masih belum dipublikasikan untuk sekarang.
                 </p>
 
                 <div class="hero-actions">
-                  <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Buka GitHub</a>
-                  <a href="projects.html" class="btn btn-secondary">Lihat Proyek</a>
+                  <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit GitHub</a>
+                  <a href="projects.html" class="btn btn-secondary">View Projects</a>
                 </div>
               </div>
             </div>
 
             <aside class="hero-side">
               <div class="contact-card">
-                <small>Primary Contact</small>
-                <h3>Profile</h3>
+                <small>Contact Overview</small>
+                <h3>Selected platforms</h3>
                 <p>
-                  Jalur utama untuk mengakses hasil kerja teknis, eksperimen, serta pembaruan yang berkaitan dengan Core Cipher Labs.
+                  Core Chiper Labs membuka beberapa jalur koneksi publik, dengan GitHub sebagai titik utama untuk project, tools, dan technical updates.
                 </p>
 
                 <div class="contact-list">
@@ -799,31 +778,31 @@
                     <strong>Dhafir</strong>
                   </div>
                   <div class="contact-item">
-                    <span>Platform</span>
+                    <span>Primary Platform</span>
                     <strong>GitHub</strong>
                   </div>
                   <div class="contact-item">
-                    <span>Fungsi</span>
-                    <strong>Projects, Tools, Releases</strong>
+                    <span>Additional Channels</span>
+                    <strong>Instagram, Facebook, X, and more</strong>
                   </div>
                   <div class="contact-item">
                     <span>Status</span>
-                    <strong>Primary Public Contact</strong>
+                    <strong>Partially public</strong>
                   </div>
                 </div>
               </div>
 
               <div class="info-panel">
                 <small>Contact Notes</small>
-                <h3>Satu jalur kontak yang terstruktur dan konsisten.</h3>
+                <h3>Simple, clean, and flexible</h3>
                 <p>
-                  Kontak difokuskan pada satu jalur utama agar tetap ringkas, jelas, dan selaras dengan keseluruhan tampilan.
+                  Beberapa akun belum menampilkan username secara publik. Untuk saat ini, platform tetap ditampilkan sebagai bagian dari identitas dan arah koneksi ke depan.
                 </p>
 
                 <div class="mini-points">
-                  <span>Terpusat pada satu platform utama</span>
-                  <span>Akses mudah ke hasil kerja dan dokumentasi</span>
-                  <span>Konsisten dengan keseluruhan tampilan platform</span>
+                  <span>GitHub tetap menjadi jalur utama</span>
+                  <span>Platform lain bisa diaktifkan kapan saja</span>
+                  <span>Tampilan tetap rapi meskipun detail akun belum dibuka</span>
                 </div>
               </div>
             </aside>
@@ -836,57 +815,96 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="badge">GitHub Contact</div>
-            <h2>Satu titik kontak yang disusun secara rapi, jelas, dan profesional.</h2>
+            <div class="badge">Connect</div>
+            <h2>A curated set of platforms for projects, updates, and future connections.</h2>
           </div>
           <p>
+            Tidak semua akun harus langsung dibuka. Yang penting, halaman ini tetap terasa lengkap,
+            profesional, dan siap dipakai saat kamu memutuskan untuk mengisinya nanti.
           </p>
         </div>
 
         <div class="contact-layout">
           <div class="contact-box reveal">
-            <h3>Kontak utama</h3>
+            <h3>Available platforms</h3>
             <p>
-              Platform utama untuk mengakses repository, proyek yang sedang dikembangkan, tools, serta perkembangan teknis dari Core Cipher Labs.
-            </p>
-            <p>
+              Berikut beberapa platform yang disiapkan untuk Core Chiper Labs.
+              Sebagian sudah bisa dijadikan jalur utama, sementara yang lain masih disimpan secara private for now.
             </p>
 
-            <div class="github-panel">
-              <div class="github-top">
-                <div class="github-icon">⌘</div>
-                <div class="github-meta">
-                  <small>GitHub</small>
-                  <h4>--</h4>
-                  <p>Repository, tools, experiments, dan publikasi teknis.</p>
+            <div class="platform-grid">
+              <div class="platform-item">
+                <div class="platform-left">
+                  <div class="platform-icon">⌘</div>
+                  <div class="platform-meta">
+                    <small>Primary</small>
+                    <h4>GitHub</h4>
+                    <p>Repository, tools, projects, and technical releases.</p>
+                  </div>
+                </div>
+                <div class="platform-status">
+                  <span>Public Link Ready</span>
                 </div>
               </div>
 
-              <a
-                href="https://github.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-primary"
-              >
-                Kunjungi Profil GitHub
-              </a>
+              <div class="platform-item">
+                <div class="platform-left">
+                  <div class="platform-icon">◎</div>
+                  <div class="platform-meta">
+                    <small>Social</small>
+                    <h4>Instagram</h4>
+                    <p>Prepared as a future channel for presence and updates.</p>
+                  </div>
+                </div>
+                <div class="platform-status">
+                  <span>Username private</span>
+                </div>
+              </div>
+
+              <div class="platform-item">
+                <div class="platform-left">
+                  <div class="platform-icon">f</div>
+                  <div class="platform-meta">
+                    <small>Social</small>
+                    <h4>Facebook</h4>
+                    <p>Reserved for later if public communication is needed.</p>
+                  </div>
+                </div>
+                <div class="platform-status">
+                  <span>Not public yet</span>
+                </div>
+              </div>
+
+              <div class="platform-item">
+                <div class="platform-left">
+                  <div class="platform-icon">𝕏</div>
+                  <div class="platform-meta">
+                    <small>Social</small>
+                    <h4>Twitter / X</h4>
+                    <p>May be used for short updates, thoughts, or announcements.</p>
+                  </div>
+                </div>
+                <div class="platform-status">
+                  <span>Coming later</span>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="info-box reveal">
-            <h3>Apa yang bisa dilihat pengunjung di sana</h3>
+            <h3>What visitors can expect</h3>
             <div class="info-list">
               <div class="info-item">
-                <strong>Projects</strong>
-                <span>Repository untuk project cybersecurity yang sedang berjalan atau akan dikembangkan.</span>
+                <strong>Projects & Repositories</strong>
+                <span>GitHub akan menjadi tempat utama untuk repository, eksperimen, dan hasil kerja yang memang ingin dibuka secara publik.</span>
               </div>
               <div class="info-item">
-                <strong>Tools</strong>
-                <span>Script, utility, automation, dan helper yang relevan dengan Core Cipher Labs.</span>
+                <strong>Future Social Presence</strong>
+                <span>Instagram, Facebook, dan X bisa ditambahkan kapan saja tanpa perlu mengubah struktur halaman ini lagi.</span>
               </div>
               <div class="info-item">
-                <strong>Updates</strong>
-                <span>Perubahan, progress, dan publikasi teknis dapat diarahkan secara langsung.</span>
+                <strong>Clean Public Identity</strong>
+                <span>Meskipun username belum ditampilkan, kehadiran platform tetap memberi kesan identitas yang lebih lengkap dan terarah.</span>
               </div>
             </div>
           </div>
@@ -899,19 +917,19 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="brand">
-            <img src="logo.png" alt="Logo Core Cipher Labs" class="brand-logo" />
+            <img src="logo.png" alt="Logo Core Chiper Labs" class="brand-logo" />
             <div class="brand-text">
-              <strong>Core Cipher Labs</strong>
-              <span>Project, Tools, dan riset Cyber Security</span>
+              <strong>Core Chiper Labs</strong>
+              <span>Projects, tools, and cybersecurity exploration</span>
             </div>
           </div>
           <p>
-            Ruang personal cybersecurity berbasis hobby milik pribadi untuk menampilkan project, tools, dan eksplorasi teknis secara terstruktur dan rapi.
+            Core Chiper Labs is a personal space for building, refining, and documenting technical work with a clean structure and a thoughtful public presence.
           </p>
         </div>
 
         <div class="footer-col">
-          <h4>Halaman</h4>
+          <h4>Pages</h4>
           <div class="footer-links">
             <a href="index.html">Beranda</a>
             <a href="projects.html">Proyek</a>
@@ -921,17 +939,20 @@
         </div>
 
         <div class="footer-col">
-          <h4>Kontak</h4>
+          <h4>Connect</h4>
           <div class="footer-links">
-            <a href="contact.html">Halaman Kontak</a>
+            <a href="contact.html">Contact Page</a>
             <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter / X</a>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Core Cipher Labs. All rights reserved.</span>
-        <span>Halaman kontak sederhana dengan GitHub sebagai jalur utama.</span>
+        <span>© 2026 Core Chiper Labs. All rights reserved.</span>
+        <span>Public contact, kept minimal now, ready to grow later.</span>
       </div>
     </div>
   </footer>
